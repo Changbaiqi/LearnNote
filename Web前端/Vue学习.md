@@ -1187,23 +1187,68 @@ https://registry.npm.taobao.org
 
 直接在与package.json同级的目录下覆写vue.config.js文件即可
 
-![](图片文件\Vue\cli配置覆写.png)
+![](Img\Vue\cli配置覆写.png)
 
 
 
 ## 脚手架文件结构
 
-![](图片文件\Vue\脚手架文件结构.png)
+![](Img\Vue\脚手架文件结构.png)
 
 
 
 ## 关于不同版本的vue：
 
-![](图片文件\Vue\不同版本vue.png)
+![](Img\Vue\不同版本vue.png)
 
 
 
 ## vue.config.js配置文件
 
-![](图片文件\Vue\vue.config.js.png)
+![](Img\Vue\vue.config.js.png)
+
+
+
+## 组件自定义事件
+
+### 事件解绑：
+
+```vue
+//解绑一个自定义事件
+this.$off('这里就是自定义绑定事件的标签名称');
+//所有的自定义事件全都解绑
+this.$off();
+```
+
+### 销毁当前组件实例
+
+```Vue
+this.$destroy(); //销毁当前组件的实例（注意，只是销毁组件实例，但是真实渲染的dom还在的，但是里面所绑定的一些vue的一些属性和事件全都不生效了）
+```
+
+```vue
+<School @自定义事件的标签名称="触发这个事件后所调用的函数"
+```
+
+### 使用ref的方式写自定义事件：
+
+```vue
+<template>
+<Student ref="student"></Student>
+</template>
+<script>
+    export default{
+        ...,
+        mounted(){
+            //this.$refs.student.$on('自定义事件的标签名称',这里填写触发时调用的自定义函数) //绑定自定义事件
+            this.$refs.student.$on('自定义事件的标签名称',(name,...params)=>{
+                console.log('App收到了学生名：'name,params)
+                console.log(this)
+            }) //绑定自定义事件
+        }
+    }
+</script>
+```
+
+
 
