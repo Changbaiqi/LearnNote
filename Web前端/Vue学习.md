@@ -1329,3 +1329,70 @@ mounted(){
 最好在beforeDestroy钩子中，用\$off去绑定 $\color{#FF3030}{当前组件所用到的}$事件。
 
 注意：要根据实际情况来用全局事件总线，有些比如父传子那么用props就行了，没必要用事件总线。
+
+
+
+
+
+## 消息订阅与发布
+
+---
+
+报纸订阅与发布：
+
+​	1.订阅报纸：住址
+
+​	2.邮递员送报纸：报纸
+
+注意：消息订阅与发布只是一种理念，想要落到实处要通过实际的代码来体现，这里推荐使用pubsub-js库
+
+在Vue中：
+
+​	1.订阅信息：消息名（手机号）
+
+​	2.发布消息：消息内容
+
+
+
+引入pubsub-js库
+
+```node
+npm i pubsub-js
+```
+
+使用：
+
+首先要在需要使用的vue组件先引入才行
+
+```vue
+import pubsub from 'pubsub-js'
+
+export default{
+	mounted(){
+		pubsub.subscribe('订阅信息名称',/*回调函数*/function(){ //订阅信息
+			console.log('有人发布了hello消息，hello消息的回调执行了')
+		})
+	},
+	methods:{
+		sendStudentName(){
+			pubsub.publish('发布消息名称(对应订阅消息名称)',/*发布的消息*/666)
+	}
+},
+
+}
+```
+
+这个库的设计有点像定时器，如果要取消订阅不能通过pubsub.unsubscribe('订阅信息名称')的方式去取消订阅，而pubsub.subscribe订阅函数每次生成都会有唯一的id，所以要这样进行销毁：
+
+```
+mounted(){
+	this.pubId = pubsub.subscribe('hello',function(msgName,data){ console.log('有人发布了hello消息')})
+},
+beforeDestroy(){
+	pubsub.unsubscribe(this.pubId)
+}
+
+```
+
+
+
