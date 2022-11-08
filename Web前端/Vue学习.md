@@ -1364,7 +1364,7 @@ npm i pubsub-js
 
 首先要在需要使用的vue组件先引入才行
 
-```vue
+```js
 import pubsub from 'pubsub-js'
 
 export default{
@@ -1384,7 +1384,7 @@ export default{
 
 这个库的设计有点像定时器，如果要取消订阅不能通过pubsub.unsubscribe('订阅信息名称')的方式去取消订阅，而pubsub.subscribe订阅函数每次生成都会有唯一的id，所以要这样进行销毁：
 
-```
+```js
 mounted(){
 	this.pubId = pubsub.subscribe('hello',function(msgName,data){ console.log('有人发布了hello消息')})
 },
@@ -1396,3 +1396,94 @@ beforeDestroy(){
 
 
 
+## $nextTick
+
+---
+
+语法：this.\$nextTick(回调函数)
+
+作用：在下一次DOM更新结束后执行其指定的回调。
+
+什么时候用：当改变数据后，要基于更新后的新DOM进行某些操作时，要在nextTick所指定的回调函数中执行。
+
+他的意思是指下一轮，他可以去指定一个回调，他所指定的回调函数会在dom节点更新完毕之后执行。
+
+![](Img\Vue\nextTick.png)
+
+
+
+## Vue动画效果
+
+---
+
+Vue还可以定义入场和出场的动画。
+
+```vue
+<template>
+	<div>
+   		<transition name="hello">
+            <h1 v-show></h1>
+    	</transition>
+    </div>
+</template>
+
+<script>
+</script>
+
+<style scoped>
+    .hello-enter-active{
+        animation: atguigu 0.5s linear;
+    }
+    .hello-leave-active{
+        animation: atguigu 0.5s reverse;
+    }
+    @keyframes atguigu{
+        from{
+            
+        }
+        to{
+            
+        }
+    }
+</style>
+```
+
+在这里，hello对应动画的.xxxx-enter-active及.xxxx-leave-active这些，动画可以自己定义。
+
+如果没有定义动画的name属性那么默认就是.v-enter-active及.v-leave-active
+
+
+
+设置默认显示：
+
+```vue
+<template>
+	<div>
+   		<transition name="hello" appear>
+            <h1 v-show></h1>
+    	</transition>
+    </div>
+</template>
+
+<script>
+</script>
+
+<style scoped>
+    .hello-enter-active{
+        animation: atguigu 0.5s linear;
+    }
+    .hello-leave-active{
+        animation: atguigu 0.5s reverse;
+    }
+    @keyframes atguigu{
+        from{
+            
+        }
+        to{
+            
+        }
+    }
+</style>
+```
+
+这里的transition里面多了个appear属性，加了这个就表示默认是显示状态，相当于初始化就是加载显示的动画。这种写法是:appear="true"的简写方式
