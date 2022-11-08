@@ -119,3 +119,11 @@ relative相对定位：
 
 
 ## overflow可以解决文档溢出问题
+
+
+
+
+
+
+
+## flex配合justify-content实现控件水平平均分布。

@@ -1580,8 +1580,8 @@ module.exports = defineConfig({
     proxy:{
       '/api':{
         target: '<url>'/*填写代理访问的api服务器，比如http:22.213.53.11:8089*/,
-        ws: true, //用于支持WebSocket
-        changeOrigin: true //用于是否让代理服务器告诉目标api服务器真相地址和端口，如果false，则表示告诉。true则表示不告诉（谎称自己和api服务器是同源请求）。
+        ws: true, //用于支持WebSocket，默认为true
+        changeOrigin: true //用于是否让代理服务器告诉目标api服务器真相地址和端口，如果false，则表示告诉。true则表示不告诉（谎称自己和api服务器是同源请求），默认为true。
       },
       '/foo':{
         target: '<other_url>'
@@ -1624,3 +1624,13 @@ module.exports = defineConfig({
 ```
 
 这里^/api使用的正则匹配/api，然后将其替换成空字符串。
+
+1.xhr
+
+2.jquery
+
+3.axios
+
+4.vue-resource
+
+官方更推荐axios来作为请求框架。
