@@ -1252,3 +1252,80 @@ this.$destroy(); //销毁当前组件的实例（注意，只是销毁组件实�
 
 
 
+
+
+## Vue生命周期图
+
+---
+
+![](Img\Vue\Vue生命周期.png)
+
+
+
+##  全局事件总线
+
+---
+
+1.一种组件间通讯的方式，适用于任意组件间通讯。
+
+全局事件总线可以忽略其子父级组件关系所有事件的触发全由一个代理来通知：
+
+以下为未简化版本的写法：
+
+```vue
+import Vue from 'vue'
+import App from './App.vue'
+
+Vue.config.productionTip = false
+const Demo = Vue.extend({})
+const d = new Demo()
+
+Vue.prototype.$bus = d
+
+new Vue({
+  render: h => h(App)
+}).$mount('#app')
+
+```
+
+以下为简化版本：
+
+```vue
+import Vue from 'vue'
+import App from './App.vue'
+
+Vue.config.productionTip = false
+
+
+new Vue({
+  render: h => h(App),
+  beforeCreate(){
+    Vue.prototype.$bus = this  //安装全局事件总线，$bus就是当前应用的vm
+  }
+}).$mount('#app')
+
+```
+
+这里的\$bus是随便的 一个变量名，但是为了标准写\$bus最好
+
+使用事件总线：
+
+1.接收数据：A组件想接收数据，则在A组件中给\$bus绑定自定义事件，事件的$\color{#FF3030}{回调留在A组件自身}$。
+
+```vue
+methods(){
+	demo(data){
+		...
+	}
+......
+mounted(){
+	this.$bus.$on('xxxx',this.demo)
+}
+}
+```
+
+提供数据：this.\$bus.\$emit('xxxx',数据)
+
+最好在beforeDestroy钩子中，用\$off去绑定 $\color{#FF3030}{当前组件所用到的}$事件。
+
+注意：要根据实际情况来用全局事件总线，有些比如父传子那么用props就行了，没必要用事件总线。
