@@ -1412,11 +1412,17 @@ beforeDestroy(){
 
 
 
-## Vue动画效果
+## Vue封装的过度与动画
 
 ---
 
-Vue还可以定义入场和出场的动画。
+作用：在插入、更新或移除DOM元素时，在合适的时候给元素添加样式类名。
+
+图示：
+
+![](Img\Vue\Vue动画封装.png)
+
+Vue还可以定义组件初始化显示入场和出场的动画。
 
 ```vue
 <template>
@@ -1487,3 +1493,134 @@ Vue还可以定义入场和出场的动画。
 ```
 
 这里的transition里面多了个appear属性，加了这个就表示默认是显示状态，相当于初始化就是加载显示的动画。这种写法是:appear="true"的简写方式
+
+
+
+另一种写法：
+
+![](Img\Vue\vue出入场动画另一种写法.png)
+
+另外一种动画执行时间的写法
+
+![](Img\Vue\另外一种附加动画执行时间的写法.png)
+
+transition只能包裹一个元素，如果要包裹多个元素要使用transition-group：
+
+![](Img\Vue\transition-group使用.png)
+
+可以集成使用第三方的动画库
+
+比如animate.css
+
+使用npm安装：
+
+```npm
+npm install animate.css
+```
+
+![](Img\Vue\animate动画库配置.png)
+
+![](Img\Vue\animate动画库配置动画.png)
+
+
+
+
+
+## 配置代理
+
+---
+
+axios下载：
+
+```npm
+npm i axios
+```
+
+解决跨域问题：
+
+1.配置cors
+
+2.jsonp ，但是只能解决get请求
+
+3.代理服务器
+
+利用Vue-cli开启代理服务器：
+
+### 开启方式一：
+
+```js
+const { defineConfig } = require('@vue/cli-service')
+module.exports = defineConfig({
+  transpileDependencies: true,
+    lintOnSave: false,//关闭语法检测
+  publicPath: process.env.NODE_ENV === 'production'? '././':'/',
+    //开启代理服务器，这里的代理连接是目标API服务器
+    devServer:{
+    proxy: 'http://localhost:4000'
+  }
+})
+
+```
+
+这里的代理会现在本地查询是否有自己想要访问的网址资源，如果没有才会走代理，否则会直接返回本地的资源。
+
+
+
+### 开启方式二：
+
+这种方式可以配置多个代理服务器
+
+```js
+const { defineConfig } = require('@vue/cli-service')
+module.exports = defineConfig({
+  transpileDependencies: true,
+    lintOnSave: false,
+  publicPath: process.env.NODE_ENV === 'production'? '././':'/',
+  devServer:{
+    proxy:{
+      '/api':{
+        target: '<url>'/*填写代理访问的api服务器，比如http:22.213.53.11:8089*/,
+        ws: true, //用于支持WebSocket
+        changeOrigin: true //用于是否让代理服务器告诉目标api服务器真相地址和端口，如果false，则表示告诉。true则表示不告诉（谎称自己和api服务器是同源请求）。
+      },
+      '/foo':{
+        target: '<other_url>'
+      }
+    }
+  }
+})
+
+```
+
+$\color{#FF3030}{注意}$：这里如果单纯这么配置书写，如果直接请求的话会携带对应首个请求路径字段：
+
+> 比如请求：http:localhost:8080/api/test，那么他最后代理服务器转发后也是http:22.213.53.11:8089/api/test
+
+
+
+#### 如果要剔除掉对应代理字段然后转发请求的话，需要配置pathRewrite配置：
+
+```js
+const { defineConfig } = require('@vue/cli-service')
+module.exports = defineConfig({
+  transpileDependencies: true,
+    lintOnSave: false,
+  publicPath: process.env.NODE_ENV === 'production'? '././':'/',
+  devServer:{
+    proxy:{
+      '/api':{
+        target: '<url>',
+        pathRewrite:{'^/api': ''}
+        // ws: true,
+        // changeOrigin: true
+      },
+      '/foo':{
+        target: '<other_url>'
+      }
+    }
+  }
+})
+
+```
+
+这里^/api使用的正则匹配/api，然后将其替换成空字符串。
