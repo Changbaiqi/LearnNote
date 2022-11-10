@@ -1665,9 +1665,131 @@ module.exports = defineConfig({
 >
 > 4.数据需要通过ajax请求获取。
 
-只有vue-router3才能使用在vue2版本，所以使用安装：
+理解：一个路由(route)就是一组映射关系（key-value），多个路由需要路由器（router）进行管理。
+
+前端路由：key是路径，value是组件。
+
+### 基本使用
+
+只有vue-router3才能使用 在vue2版本，所以使用安装：
 
 ```npm
 npm i vue-router@3
 ```
 
+
+
+应用插件：Vue.use(VueRouter)
+
+编写router配置项：
+
+```js
+引入VueRouter
+import VueRouter from 'vue-router'
+//引入Luyou 组件
+import About from '../components/About.vue'
+import Home from '../components/Home.vue'
+
+//创建router实例对象，去管理一组一组的路由规则
+export default new VueRouter({
+    routes:[
+        {
+            path:'/about',
+            component:About
+        },
+        {
+            path: '/home',
+            component:Home
+        }
+    ]
+})
+
+
+```
+
+实现切换（active-class可配置高亮样式）
+
+```html
+<routeer-link active-class="active" to="/about">About</routeer-link>
+```
+
+指定展示位置
+
+```html
+<router-view></router-view>
+```
+
+### 多级路由（多级路由）
+
+1.配置路由规则，使用children配置项：
+
+```js
+routes:[
+    {
+        path:'/about',
+        component: About,
+    },
+    {
+        path: '/home',
+        component: Home,
+        children:[//通过children配置子级路由
+            {
+                path: 'news', //此处一定不要写：/news
+            	component:News
+            },
+            {
+                path: 'message',//此处一定不要写，/message
+                component: Message
+            }
+        ]
+    }
+]
+```
+
+2.跳转（要写完整路径）：
+
+```html
+<router-link to="/home/news">News</router-link>
+```
+
+
+
+### 跳转并通过query参数进行传参
+
+```html
+<router-link :to="`/home/message/detail?id=${m.id}&title=${m.title}`">{{m.title}}</router-link>
+```
+
+另一种写法（推荐）：
+
+```html
+<router-link :to="{
+                  	path: '/home/message/detail',
+                  	query:{
+                  		id: m.id,
+                  		title: m.title
+                  	}
+                  }
+">{{m.title}}</router-link>
+```
+
+### 接收参数：
+
+```js
+$route.query.id
+$route.query.title
+```
+
+
+
+
+
+### 几个注意点
+
+1.路由组件通常存放在pages文件夹，一般组件通常存放在components文件夹。
+
+2.通过切换，“隐藏”了的路由组件，默认是被销毁的，需要的时候再去挂载。
+
+3.每个组件都有自己的$route属性，里面存储着自己的路由信息。
+
+4.整个应用只有一个router，可以通过组件的$router属性获取到。
