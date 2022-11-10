@@ -1641,3 +1641,33 @@ module.exports = defineConfig({
 
 ---
 
+
+
+
+
+
+
+## 路由（vue-router）
+
+---
+
+### vue-router的理解
+
+> vue的一个插件库，专门用来实现SPA应用
+
+### 对SPA应用的理解
+
+> 1.单页Web应用(single page web application, SPA)。
+>
+> 2.整个应用只有一个完整的页面。
+>
+> 3.点击页面中的导航链接$\color{#FF3f3f}{不会刷新}$页面，只会做页面的$\color{#FF3f3f}{局部更新}$。
+>
+> 4.数据需要通过ajax请求获取。
+
+只有vue-router3才能使用在vue2版本，所以使用安装：
+
+```npm
+npm i vue-router@3
+```
+
