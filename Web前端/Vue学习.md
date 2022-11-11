@@ -1782,6 +1782,235 @@ $route.query.title
 
 
 
+### 命名路由
+
+作用：可以简化路由的跳转
+
+在路由中加上name属性就行：
+
+```js
+引入VueRouter
+import VueRouter from 'vue-router'
+//引入Luyou 组件
+import About from '../components/About.vue'
+import Home from '../components/Home.vue'
+
+//创建router实例对象，去管理一组一组的路由规则
+export default new VueRouter({
+    routes:[
+        {
+            name: 'guanyu'	//给路由起名
+            path:'/about',
+            component:About
+        },
+        {
+            name: 'jia'
+            path: '/home',
+            component:Home
+        }
+    ]
+})
+```
+
+使用：
+
+```html
+<router-link :to="{
+                  	name: 'guanyu',
+                  	query:{
+                  		id: m.id,
+                  		title: m.title
+                  	}
+                  }
+">{{m.title}}</router-link>
+```
+
+
+
+### 使用占位符申明接收params参数
+
+```js
+routes:[
+    {
+        path:'/about',
+        component: About,
+    },
+    {
+        path: '/home',
+        component: Home,
+        children:[//通过children配置子级路由
+            {
+                path: 'news', //此处一定不要写：/news
+            	component:News
+            },
+            {
+                path: 'message',//此处一定不要写，/message
+                component: Message
+                children:[
+                	{
+                		name: 'xiangqing',
+                		path: 'detail/:id/:title',	//使用占位符申明接收params参数
+            		}
+                ]
+            }
+        ]
+    }
+]
+```
+
+传递参数：
+
+```html
+<!-- 跳转携带params参数，to的字符串写法-->
+<router-link :to="/home/message/detail/666/你好">跳转</router-link>
+
+<router-link :to="{
+                  	name: 'xiangqing',
+                  	params:{
+                  		id: 666,
+                  		title: '你好'
+                  	}
+                  }
+">{{m.title}}</router-link>
+```
+
+$\color{#FF3f3f}{特别注意：}$路由携带params参数时，若使用to的对象写法，则不能使用path配置项，必须使用name配置！
+
+接收参数：
+
+```js
+$route.params.id
+$route.params.title
+```
+
+
+
+### 路由组件props配置
+
+```js
+routes:[
+    {
+        path:'/about',
+        component: About,
+    },
+    {
+        path: '/home',
+        component: Home,
+        children:[//通过children配置子级路由
+            {
+                path: 'news', //此处一定不要写：/news
+            	component:News
+            },
+            {
+                path: 'message',//此处一定不要写，/message
+                component: Message
+                children:[
+                	{
+                		name: 'xiangqing',
+                		path: 'detail/:id/:title',	//使用占位符申明接收params参数
+                		component: Detail,
+                		//第一种写法：props值为对象，该对象中所有的key-value的组合最终都会通过props传给Detail组件
+                		// props:{a:900}
+                		//第二种写法：props值为布尔值，布尔值为true，则把路由收到的所有params参数通过props传给Detail组件
+                		// props:true
+                
+                		//第三种写法：props值为函数，该函数返回的对象中每一组key-value都会通过props传给Detail组件，这种写法是最强大的
+                		props(route){
+            				return{
+            					id:route.query.id,
+            					title:route.query.title
+            				}
+            			}
+            		}
+                ]
+            }
+        ]
+    }
+]
+```
+
+
+
+### \<reuter-link\>的replace属性
+
+1.作用：控制路由跳转时操作浏览器历史记录的模式
+
+2.浏览器的历史记录有两种写入方式：分别为push和replace，push是追加历史记录，replace是替换当前记录。路由跳转时候默认为push。
+
+3.如何开启replace模式：
+
+```html
+<router-link replace .......>News<router-link>
+```
+
+
+
+
+
+### 编程式路由导航
+
+```js
+//$router的两个API
+this.$router.push({
+    name: 'xiangqing',
+    params:{
+        id:xxx,
+        title:xxx
+    }
+})
+
+this.$router.replace({
+    name: 'xiangqing',
+    params:{
+        id:xxx,
+        title:xxx
+    }
+})
+
+this.$router.forward() //前进
+this.$routeer.back() //后退
+this.$router.go(3)	//可前进可后退，且可以指定前进后退的次数，负数为后退，正数为前进
+```
+
+
+
+### 缓存路由组件
+
+```html
+<keep-alive include="这里写组件名称">
+    <router-view></router-view>
+</keep-alive>
+```
+
+如果不写include那么只要是被keep-alive包裹的组件都会被缓存下来。
+
+缓存多个组件：
+
+```html
+<keep-alive :include="['News','Mesa']">
+    <router-view></router-view>
+</keep-alive>
+```
+
+
+
+激活和不激活状态（可以理解成组件切换状态使用吧）:
+
+```js
+activated(){//路由组件被激活时触发
+    ......
+},
+deactivated(){//路由组件失活时触发。
+    ......
+}
+```
+
+
+
+### 路由守卫
+
+
+
 
 
 ### 几个注意点
@@ -1793,3 +2022,4 @@ $route.query.title
 3.每个组件都有自己的$route属性，里面存储着自己的路由信息。
 
 4.整个应用只有一个router，可以通过组件的$router属性获取到。
+
