@@ -820,7 +820,7 @@ CMD java -version
 构建镜像：
 
 ```shell
-docker build -t test_jdk1.8.0_271
+docker build -t test_jdk1.8.0_271 .
 ```
 
 运行镜像：
@@ -887,7 +887,7 @@ CMD /usr/bin/mysqld_safe
 构建镜像：
 
 ```shell
-docker build -t test-mysql
+docker build -t test-mysql .
 ```
 
 运行镜像：
