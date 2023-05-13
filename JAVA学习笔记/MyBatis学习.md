@@ -99,7 +99,7 @@
 
 ### SQL操作
 
-> ![](F:\JAVA学习笔记\图片文件\MyBatis\SQL操作_1.png)
+> ![](图片文件\MyBatis\SQL操作_1.png)
 >
 > SQL操作时在另外一个xml文件单独写的
 
@@ -129,8 +129,6 @@
 ---
 
 # 从这里截断
-
-
 
 
 
@@ -356,3 +354,11 @@ public void updateNotNull(){
 2. 当POJO没有任何手写的构造函数时MyBatis框架将会使用set注入。
 3. 当有多个构造函数时且没有的无参构造那么MyBatis就只会从这些有参构造进行注入，如果没有一个能匹配的上的话就会报错，但是如果有手写了无参构造的话如果有参构造没有匹配的注入将会进行set注入避免报错。
    总结：从以上能够看出Mybatis结合Spring框架自动进行POJO注入时的优先顺序是：先构造，后set。
+
+
+
+# Mapper的xml和Mapper的Java接口的关系
+
+> 说明：Mapper的Java接口不是必须的，也可以不写Mapper对应的Java接口直接使用Mapper的xml，这里要注意的是单纯的使用MyBatis，Mapper的xml中的namespace和对应的sql的id都代表的是唯一id的意思没有其他关联的用途，除非设定绑定
+
+![](图片文件\MyBatis\MyBatis不是用映射Mapper.png)

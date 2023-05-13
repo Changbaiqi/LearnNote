@@ -881,7 +881,6 @@ mysql -e "grant all privileges on *.* to 'root'@'localhost' identified by '12345
 mysql -uroot -p123456 -e "show databases;"
 EXPOSE 3306
 CMD /usr/bin/mysqld_safe
-
 ```
 
 构建镜像：
