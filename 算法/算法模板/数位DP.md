@@ -9,6 +9,8 @@
 > 视屏教学：
 >
 > [数位DP](https://www.bilibili.com/video/BV1Fc411h76q)
+>
+> 这里说一下，前导零的意思，就是这个数字的前面都是零，比如说我们要dp的数字的最数字的位数为123。但是我们在进行dfs的DP的时候会从1开始，那么一开始我们从1开始dfs的时候那么就是001。也就是前面占位的都是零，也就叫做前导零。
 
 
 
@@ -17,9 +19,18 @@
 
 
 ```java
+
+
 import java.util.Arrays;
 import java.util.Scanner;
 
+/**
+ * @description: 数位DP
+ * 这个是一个数位DP的模板，这里的数位DP主要是利用DFS来实现的。
+ * @author 长白崎
+ * @date 2023/6/4 1:05
+ * @version 1.0
+ */
 public class NumBitDP {
     public static void main(String[] args) {
         //测试数据
@@ -48,7 +59,18 @@ public class NumBitDP {
     }
 
 
-
+    /**
+     * 这个函数是数位DP的核心算法
+     * @param dp DP的数组
+     * @param bit 这个数组主要用来存每一位的数字，数字存储的位置为从最高位开始，比如说我们存123这个数字，那么在数组里面应该是[][3][2][1]
+     * @param index 这个用于标记当前dfs的是对应数组的哪一个位置，dfs是从最高位先递归到最低位（个位）然后从低位逐渐递归到最高位
+     * @param preNum 这个变量主要的作用是用于记录前面dfs所选的数字
+     * @param limit 这个变量主要用于标记是否当前递归到的dfs是否有最高位限制，这个最高位限制与之前递归的dfs有关
+     * @param zero 这个变量主要是用于记录是否含有前导零，这个前导零的意思指的是除这一位以外所有比当前dfs的这一位高的位数都是零，比如：
+     *             123这个数字，我们利用数位dp的时候相当于记录1~123这个区域的数字有多少符合要求的，那么从最低位开始001、002、...、024
+     *             这里的0代表的就是前导零
+     * @return 返回当前位所能取到的合法数字的全部数量
+     */
     public static long dfs(long dp[][],int bit[],int index,int preNum,boolean limit ,boolean zero){
         //如果搜到了最后一位那么就直接退出就得
         if(index==0)

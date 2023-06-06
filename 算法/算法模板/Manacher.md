@@ -10,74 +10,76 @@
 
 > ```java
 > 
-> import java.util.Scanner;
+> import java.util.Arrays;
 > 
 > /**
->  * @description: 马拉车(Manacher)算法模板
->  * 此算法是一种匹配子串最长回文算法，可以大大减少时间复杂度
+>  * @description: 马拉车（Manacher）算法模板
+>  * 此算法是一种匹配子串最长回文算法，可以大大减少时间复杂度，但是这里一定要主要要使用数组，不能直接使用字符串拼接，字符串直接拼接效率相比数组使用
+>  * 效率会非常差，比较长的回文会超时。
 >  * @author 长白崎
->  * @date 2023/3/27 2:20
+>  * @date 2023/6/1 22:39
 >  * @version 1.0
 >  */
-> public class Manacher {
+> public class Manacher算法 {
 > 
 >     public static void main(String[] args) {
->         //以下用于测试集，可以直接忽略掉
->         Scanner sc = new Scanner(System.in);
->         String text = sc.next();
+>         //测试数据
+>         char text1[] = "aba".toCharArray();
+>         char text2[] = "abcba".toCharArray();
+>         char text3[] = "abracbalnavlvnalvnaslfslajslauogaslga".toCharArray();
+>         char text4[] = "aa1ABA1b".toCharArray();
 > 
->         //开始manacher算法
->         manacher(text);
-> 
+>         manacher(text1);
+>         manacher(text2);
+>         manacher(text3);
+>         manacher(text4);
 >     }
+>     public static void manacher(char text[]){
+>         /*
+>         * 这里设置成len*2+1+2主要是开辟一个数组用于寄存我们需要判断的回文字符串
+>         * 比如：^#a#b#a#* 需要开原长度的*2+1+2也就是3*2+1+2=9
+>         * ^#a#b#c#b#a#* 需要开原长度的*2+1+2也就是5*2+1+2=13
+>         */
+>         char resText[] = new char[text.length*2+1+2];
 > 
 > 
->     /**
->      * Manacher核心算法
->      * @param text
->      */
->     public static void manacher(String text){
->         String m = ""; //用于存储Manacher处理之后的字符串
->         m+="$"; //插入头标记符号
->         m+="#"; //插入特殊符号
->         for(int i=0 ; i < text.length() ; ++i){
->             m +=text.charAt(i);//插入字符串
->             m +="#"; //插入特殊符号
+>         resText[0]='^';
+>         resText[1]='#';
+>         for(int i= 0; i <text.length ; ++i){
+>             resText[i*2+2] = text[i];
+>             resText[i*2+2+1] = '#';
 >         }
->         m+="^"; //插入末尾标记符号
+>         resText[resText.length-1] = '*';
 > 
->         int data[] = new int[m.length()];
->         int i= 1; //遍历计数用的
->         int max =0; //用于记录最大回文子串长度
->         while(i < m.length()-1){
->             int j =0; //以i点为回文中心，向左右拓展j位匹配是否相同。
->             while(m.charAt(i-j-1)==m.charAt(i+j+1)) //开始匹配，直至不是回文为止
->                 ++j;
->             data[i] = j;
->             max = Math.max(max,j); //更新最长回文子串的大小
+>         //用于存储以i为中心的回文长度
+>         int ans[] = new int[resText.length];
+> 
+>         int i= 1;
+>         int maxLen = 0; //这个是用于记录最长回文长度
+>         while(i<resText.length-2){
+>             int l = i-1;
+>             int r= i+1;
+>             int len =0;
+>             while(resText[l]==resText[r]){
+>                 ++len;
+>                 --l;
+>                 ++r;
+>             }
+> 
+>             ans[i] = len;
+>             //用于比较赋值最长回文
+>             maxLen = maxLen<len ? len : maxLen;
 >             ++i;
 >         }
 > 
-> 
->         System.out.println("最长回文子串的长度为："+max);
-> 
->         testPrint(m,data); //这个不用管，使用的时候记得删掉，这个只是用于输出可视化数据的，没啥用
+>         System.out.println("最长回文长度为："+maxLen);
+>         System.out.println("回文的数组："+pr(ans));
 >     }
 > 
->     /**
->      * 这个函数不用管，只是用于输出数据可视化，方便大家更直观的看
->      * @param m
->      * @param data
->      */
->     public static void testPrint(String m,int data[]){
->         for(int i = 0 ; i < m.length() ; ++i){
->             System.out.print(m.charAt(i)+"    ");
->         }
->         System.out.println();
->         for(int i = 0 ; i < data.length ; ++i){
->             System.out.print(data[i]+"    ");
->         }
-> 
+>     public static String pr(int data[]){
+>         return Arrays.toString(data);
 >     }
+> 
 > }
+> 
 > ```
