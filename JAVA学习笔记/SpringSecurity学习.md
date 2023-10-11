@@ -1205,7 +1205,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 ***
 
-
+> 这里JWT相关的工具类代码就不多展示了。这边可以在网上找到很多的JWTUtils模板。
 
 ### 静态文件展示：
 
@@ -1294,9 +1294,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 ![](.\图片文件\Security\Snipaste_2023-09-20_14-55-35.png)
 
-### 配置SpringSecurity了。
+### 配置SpringSecurity：
 
-#### 1、得到UserDetails方式（实现UserDetailsService接口的方式）：
+#### 1.1、得到UserDetails方式（实现UserDetailsService接口的方式）：
 
 ```java
 import com.cbq.springsecuritystudy6.entity.User;
@@ -1347,7 +1347,7 @@ public class SecurityUserDetailServiceImpl implements UserDetailsService {
 }
 ```
 
-#### 2、得到UserDetails方式（实现UserDetails接口的方式）（推荐）：
+#### 1.2、得到UserDetails方式（实现UserDetails接口的方式）（推荐）：
 
 ```java
 
@@ -1443,4 +1443,380 @@ public class SecurityUser implements UserDetails {
     }
 }
 
+```
+
+#### 2、通过拦截器接口实现JWT的拦截认证：
+
+> 这里就用Map来模拟Redis了。
+
+```java
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.interfaces.Claim;
+import com.auth0.jwt.interfaces.DecodedJWT;
+import com.cbq.springsecuritystudy6.utils.JWTUtils;
+import com.cbq.springsecuritystudy6.vo.SecurityUser;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
+import org.springframework.web.filter.OncePerRequestFilter;
+
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+
+@Slf4j
+@Component
+public class JwtCheckFilter extends OncePerRequestFilter {
+    //模拟Redis
+    public static Map<String,Object> redis = new HashMap<>();
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+
+        //获取token
+        String authorization = request.getHeader("Authorization");
+        //如果token不存在可能是其他白名单的请求，这里直接放行
+        if(!StringUtils.hasText(authorization)){
+            //放行
+            filterChain.doFilter(request,response);
+            return;
+        }
+
+        DecodedJWT token = JWTUtils.getToken(authorization);
+        //获取uid
+        Claim uid = token.getClaim("uid");
+
+        System.out.println(uid.asString());
+
+        //判断是否为非法token
+        if(!JWTUtils.verify(authorization) && JWTUtils.isExpired(authorization)){
+            try {
+                throw new RuntimeException("非法Token");
+            }catch (Exception e){
+            }
+        }
+
+        String redisKey = "login:"+uid.asString();
+        //从redis里面获取对象
+        SecurityUser securityUser =(SecurityUser) redis.get(redisKey);
+        //如果redis里面没有相应的token，那么说明token非法
+        if(Objects.isNull(securityUser)){
+            throw new RuntimeException("您未登录");
+        }
+
+        //TODO 获取权限信息封装到Authentication中
+        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(securityUser,null,securityUser.getAuthorities());
+        SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
+        //放行
+        filterChain.doFilter(request,response);
+    }
+}
+```
+
+
+
+#### 3、实现WebSecurityConfigurerAdapter接口对Security进行配置：
+
+```java
+
+import com.cbq.springsecuritystudy6.filter.JwtCheckFilter;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import javax.annotation.Resource;
+
+@Slf4j
+@Configuration
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+
+    @Resource
+    MyAuthenticationSuccessHandler myAuthenticationSuccessHandler;
+
+    @Resource
+    JwtCheckFilter jwtCheckFilter;
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+
+        //关闭csrf
+        http.csrf().disable();
+
+        //这里是将之前自定义实现拦截器的接口解将其放到用户账号密码认证拦截器的前面
+        http.addFilterBefore(jwtCheckFilter, UsernamePasswordAuthenticationFilter.class);
+
+        //这里因为是基于JWT的前后端分离项目了，所以没必要用SESSION进行认证之类的，所以直接取消掉
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
+        http.authorizeRequests()
+                .antMatchers("/**/**.html").denyAll()//这里配置主要是用于阻止用户直接通过url访问html静态资源，提高安全性。
+                .antMatchers("/login/**").permitAll()//这里是将login登录接口相关的全部放开
+                .anyRequest()
+                .authenticated();
+
+        http.formLogin()
+                .loginPage("/login/index.html")//这里配置登录页面
+                .permitAll();
+
+    }
+}
+```
+
+> 好了，到这所有的Security配置基本完成了。现在就是相关的访问接口的实现和对接。
+
+
+
+### 实现登录的相关API接口等：
+
+#### Controller层
+
+>  LoginController
+
+```java
+import com.cbq.springsecuritystudy6.entity.User;
+import com.cbq.springsecuritystudy6.service.LoginService;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
+
+@RestController
+@RequestMapping("login")
+public class LoginController {
+
+    @Resource
+    private LoginService loginService;
+
+    @PostMapping("login")
+    public Object login(@RequestBody User user){
+        return loginService.toLogin(user.getUid(),user.getPassword());
+    }
+}
+```
+> UserController
+
+```java
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+@Controller
+@RequestMapping("user")
+public class UserController {
+
+
+    @ResponseBody
+    @GetMapping("query")
+    @PreAuthorize("hasAuthority('root:query') or hasRole('ROOT')")
+    public Object query(){
+        System.out.println("成功访问查询页面");
+        return "成功访问查询页面";
+    }
+
+    @ResponseBody
+    @GetMapping("delete")
+    @PreAuthorize("hasRole('ROOT')")
+    public Object delete(){
+        return "删除成功";
+    }
+
+    @GetMapping("index")
+    public Object toIndex(){
+        return "forward:/home/index.html";
+    }
+}
+```
+
+
+
+#### Service层
+
+> LoginService
+
+```java
+import com.cbq.springsecuritystudy6.entity.User;
+import com.cbq.springsecuritystudy6.filter.JwtCheckFilter;
+import com.cbq.springsecuritystudy6.mapper.UserMapper;
+import com.cbq.springsecuritystudy6.service.LoginService;
+import com.cbq.springsecuritystudy6.service.RoleService;
+import com.cbq.springsecuritystudy6.utils.JWTUtils;
+import com.cbq.springsecuritystudy6.vo.SecurityUser;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.util.*;
+
+@Service
+public class LoginServiceImpl implements LoginService {
+    @Resource
+    UserMapper userMapper;
+
+    @Resource
+    RoleService roleService;
+
+    @Resource
+    ObjectMapper objectMapper;
+
+
+
+    @Override
+    public Object toLogin(String uid, String password) {
+        Map<String, Object> result = new HashMap<>();
+        //通过Security生成Token
+        List<String> strings = roleService.queryPermissionsByUserUid(uid);
+        SecurityUser securityUser = new SecurityUser(User.builder().build());
+        List<SimpleGrantedAuthority> authorityList = new ArrayList<>();
+        strings.forEach((v)->{authorityList.add(new SimpleGrantedAuthority(v));});
+        securityUser.setAuthorityList(authorityList);
+
+        //装置至Redis
+        JwtCheckFilter.redis.put("login:"+uid,securityUser);
+        //TODO 成功
+        Map<String, String> tokenMap = new HashMap<>();
+        tokenMap.put("uid", uid);
+        String token = JWTUtils.createToken(tokenMap);
+        result.put("code", 200);
+        result.put("msg", "登录成功");
+        result.put("token", token);
+
+        return result;
+    }
+}
+```
+
+> UserService
+
+```java
+import com.cbq.springsecuritystudy6.entity.User;
+import com.cbq.springsecuritystudy6.mapper.UserMapper;
+import com.cbq.springsecuritystudy6.service.UserService;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+
+@Service
+public class UserServiceImpl implements UserService {
+    @Resource
+    UserMapper userMapper;
+
+    @Override
+    public User getUserFromUid(String uid) {
+        User user = userMapper.getUserByUid(uid);
+        return user;
+    }
+
+    @Override
+    public User userLogin(String uid, String password) {
+        User user = userMapper.getUser(uid, password);
+        return user;
+    }
+}
+```
+
+> RoleService
+
+```java
+import com.cbq.springsecuritystudy6.mapper.RoleMapper;
+import com.cbq.springsecuritystudy6.service.RoleService;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.util.List;
+
+@Service
+public class RoleServiceImpl implements RoleService {
+
+    @Resource
+    private RoleMapper roleMapper;
+
+    @Override
+    public List<String> queryPermissionsByUserUid(String uid) {
+        List<String> strings = roleMapper.queryRolePermissionsByUserId(uid);
+        return strings;
+    }
+}
+```
+
+
+
+#### Mapper
+
+> UserMapper
+
+```java
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
+
+public interface RoleMapper {
+
+    /**
+     * 通过UID查询对应的用户权限的详细权限列表
+     * @param uid
+     * @return
+     */
+    @Select("select role_menu.code from user,role,role_menu where user.role_uid=role.uid and role.uid=role_menu.role_uid AND user.uid=#{uid}")
+    public List<String> queryRolePermissionsByUserId(@Param("uid") String uid);
+}
+```
+
+> RoleMapper
+
+```java
+import com.cbq.springsecuritystudy6.entity.User;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+
+public interface UserMapper {
+
+    /**
+     * 通过账号和密码查询账号实体
+     * @param uid
+     * @param password
+     * @return
+     */
+    @Select("select * from user where uid=#{uid} and password=#{password}")
+    public User getUser(@Param("uid")String uid,@Param("password")String password);
+    /**
+     * 通过账号查询账号实体
+     * @param uid
+     * @return
+     */
+    @Select("select * from user where uid=#{uid}")
+    public User getUserByUid(@Param("uid")String uid);
+}
 ```

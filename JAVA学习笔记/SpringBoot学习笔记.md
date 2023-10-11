@@ -1107,13 +1107,11 @@ http://localhost:8080/myboot/student?page=1&pageSize=20
 
    是哟Postman：可以测试get，post，put，delete等请求
 
-
-
-# 常见问题解决
+## 常见问题解决
 
 ---
 
-## 1. Mapper.xml中出现多嵌套类的注入解决
+### 1. Mapper.xml中出现多嵌套类的注入解决
 
 ```xml
  <resultMap id="usermap" type="com.xiaobei.xiaobei_server.pojo.User">
@@ -1150,37 +1148,37 @@ http://localhost:8080/myboot/student?page=1&pageSize=20
 
 
 
-## 2. 各种注入类注解使用规范
+### 2. 各种注入类注解使用规范
 
 ---
 
-### @Controller 控制器（注入服务）
+#### @Controller 控制器（注入服务）
 > 用于标注控制层，相当于struts中的action层
 
-### @Service 服务（注入dao）
+#### @Service 服务（注入dao）
 
 > 用于标注服务层，主要用来进行业务的逻辑处理
 
-### @Repository（实现dao访问）
+#### @Repository（实现dao访问）
 
 > 用于标注数据访问层，也可以说用于标注数据访问组件，即DAO组件
 
-### @Component （把普通pojo实例化到spring容器中，相当于配置文件中的 ）
+#### @Component （把普通pojo实例化到spring容器中，相当于配置文件中的 ）
 
 > 泛指各种组件，就是说当我们的类不属于各种归类的时候（不属于@Controller、@Services等的时候），我们就可以使用@Component来标注这个类。Component注解也会当做配置类，但是并不会为其生成CGLIB代理Class，所以在生成Driver对象时和生成Car对象时调用car()方法执行了两次new操作，所以是不同的对象。当时Configuration注解时，生成当前对象的子类Class，并对方法拦截，第二次调用car()方法时直接从BeanFactory之中获取对象，所以得到的是同一个对象。
 > 一般用@Configguration是更优的
 
 
 
-## 3. 前端传入时如何获取以及格式化问题
+### 3. 前端传入时如何获取以及格式化问题
 
-### 1.问题描述
+#### 1.问题描述
 #### 1.数据库里的日期为date类型，java如何进行接收？
 #### 2.前端传过来的时间，后端如何接收？
 #### 3.后端如何将时间存入数据库？
 #### 4.写入数据库的时间会比传入的时间提前一天？
 
-### 2.解决方法
+#### 2.解决方法
 #### 2.1两个注解解决接收问题
 
 ```java
@@ -1194,7 +1192,7 @@ http://localhost:8080/myboot/student?page=1&pageSize=20
 *  @JsonFormat出参注解；格式化从数据库库里面查询出来的时间为正确格式
 *  pattern参数可以自由定制。
 *  timezone参数用于调整时区
-### 2.2一个参数解决时间提前问题
+#### 2.2一个参数解决时间提前问题
   这只要是由于时区的问题，所以时间上面会提前8小时，自己把它加上去就好了。可以直接在连接数据库的语句后面添加参数serverTimezone=GMT%2B8
   我这里加载在末尾，拼接完整的如下所示：
 
@@ -1202,13 +1200,51 @@ http://localhost:8080/myboot/student?page=1&pageSize=20
 
 参数里的GMT%2B8实际上就是GMT+8,只不过在拼接的时候得用%2B才行。
 
-
-
-## 注入注解使用问题
+#### 注入注解使用问题
 
 ---
 
 注意：在使用对应的类的时候不能使用new的形式创建，否则对应类内部的注入注解将会全部失效。
+
+
+
+
+
+## 常见SpringBoot配置
+
+***
+
+```yaml
+spring:
+  application:
+    name: security6 #配置应用名称
+  datasource:
+    url: jdbc:mysql://localhost:3306/security6?useUnicode=true&characterEncoding=UTF-8 #配置数据源url
+    driver-class-name: com.mysql.cj.jdbc.Driver #配置数据源的数据库驱动
+    username: root #数据库的账号
+    password: 12345678 #数据库的密码
+server:
+  port: 8080 #服务器的端口
+  tomcat: #Tomcat相关配置
+    max-connections: 8192 #最大连接数
+    accept-count: 100 #等待队列长度
+    threads:
+      max: 500 #最大工作线程数
+      min-spare: 10 #最小空闲线程数
+
+```
+
+### 针对4C8G的Tomcat配置，可以参考建议值：
+
+```yaml
+tomcat:
+accept-count: 1000
+max-connections: 10000
+max-threads: 800
+min-spare-threads: 100
+```
+
+
 
 
 
