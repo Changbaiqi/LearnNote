@@ -32,41 +32,50 @@
 >  * @date 2023/3/28 0:28
 >  * @version 1.0
 >  */
+> import java.util.Arrays;
+> import java.util.Scanner;
+> 
 > public class KMP {
 > 
+> 	public static void main(String[] args) {
+> 		// TODO Auto-generated method stub
+> 		Scanner sc = new Scanner(System.in);
+> 		
+> 		//String s = sc.next();
+> 		String pat = sc.next();
+> 		
+> 		int next[] = new int[pat.length()];
+> 		
+> 		buildNext(pat.toCharArray(), next);
+> 		System.out.println(Arrays.toString(next));
+> 		//System.out.println(kmp(s.toCharArray(),pat.toCharArray(),next));
+> 		
+> 	}
+> 	
+> 	
+> 	
+> 	public static int kmp(char s[],char pat[],int next[]) {
+> 		
+> 		
+> 		int j=0;
+> 		for(int i=0 ; i<s.length ; ++i) {
+> 			while(j>0 && s[i]!=pat[j]) j = next[j-1];
+> 			if(s[i]==pat[j]) ++j;
+> 			if(j==pat.length) return i-pat.length+1;
+> 		}
+> 		return -1;
+> 	}
+> 	
+> 	public static void buildNext(char pat[],int next[]) {
+> 		
+> 		int i = 0;
+> 		for(int j=1; j < pat.length ; ++j) {
+> 			while(i>0 && pat[i]!=pat[j]) i = next[i-1];
+> 			if(pat[i]==pat[j]) ++i;
+> 			next[j] = i;
+> 		}
+> 		
+> 	}
 > 
->     public static void main(String[] args) {
-> 
->         //测试数据集
->         boolean cmp = kmp("laskdjllsnvasldfnalsljasldfnvnzx,va;dkfapasdfalfasjgakskslbvkkzvaslkfhasklbxxvbsafhaslkkhaskkbasdfas","dfnvnzx,va;dkfa");
->         if(cmp)
->             System.out.println("匹配成功");
->         else
->             System.out.println("没有匹配的子串");
->     }
-> 
-> 
->     //KMP核心算法
->     public static boolean kmp(String str,String cmp){
-> 
->         int i =0; //主串指针
->         int j =0; //子串指针
->         while(i < str.length()){
-> 
->             //这个是用于子串回溯的
->             while(cmp.charAt(j)!=str.charAt(i) && j>0) --j;
-> 
->             //用于判断当前i，j分别指向的主串和子串的字符是否匹配，匹配则子串指针j++。
->             if(str.charAt(i)==cmp.charAt(j))
->                 ++j;
->             //判断是否匹配完了最后一个，如果j的引用指针大于等于他的字符串长度说明匹配完成了，直接可以返回说有此子串。
->             if(j==cmp.length()){
->                 return true; //匹配到子串，直接返回true;
->             }
->             ++i;
->         }
-> 
->         return false;//未匹配到子串，返回false;
->     }
 > }
 > ```
