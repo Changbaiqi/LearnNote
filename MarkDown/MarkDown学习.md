@@ -14,33 +14,45 @@
 
 数字符号表
 
-| 描述                  | 符号                                 | 代码                              |
-| --------------------- | ------------------------------------ | --------------------------------- |
-| 求和公式              | $\sum$                               | \sum                              |
-| 求和上下标            | $\sum_{i=0}^n$                       | \sum_{i=0}^n                      |
-| 叉乘/点乘	× \times | $\times \cdot$                       | \times \cdot                      |
-| 正负号                | $\pm$                                | \pm                               |
-| 除号                  | $\div$                               | \div                              |
-| 竖线                  | $\mid$                               | \mid                              |
-| 点                    | $\cdot$                              | \cdot                             |
-| 圈                    | $\circ$                              | \circ                             |
-| 星号                  | $\ast$                               | \ast                              |
-| 克罗内克积            | $\bigotimes$                         | \bigotimes                        |
-| 异或                  | $\bigoplus$                          | \bigoplus                         |
-| 小于等于              | $\leq$                               | \leq                              |
-| 大于等于              | $\geq$                               | \geq                              |
-| 不等于                | $\neq$                               | \neq                              |
-| 约等于                | $\approx$                            | \approx                           |
-| N元乘积	∏ \prod    | $\prod$                              | \prod                             |
-| N元余积               | $\coprod$                            | \coprod                           |
-| 省略号                | $\cdots$                             | \cdots                            |
-| 积分                  | $\int$                               | \int                              |
-| 双重积分              | $\iint$                              | \iint                             |
-| 曲线积分              | $\oint$                              | \oint                             |
-| 无穷                  | $\infty$                             | \infty                            |
-| 右箭头                | $$\rarr$$                            | \rarr                             |
-| 左箭头                | $$\larr$$                            | \larr                             |
-| 极限lim               | $$\lim\limits_{x\rarr0}\frac{a}{b}$$ | \lim\limits_{x\rarr0}\frac{a}{b}$ |
+| 描述                  | 符号                               | 代码                              |
+| --------------------- | ---------------------------------- | --------------------------------- |
+| 求和公式              | $\sum$                             | \sum                              |
+| 求和上下标            | $\sum_{i=0}^n$                     | \sum_{i=0}^n                      |
+| 叉乘/点乘	× \times | $\times \cdot$                     | \times \cdot                      |
+| 正负号                | $\pm$                              | \pm                               |
+| 除号                  | $\div$                             | \div                              |
+| 竖线                  | $\mid$                             | \mid                              |
+| 点                    | $\cdot$                            | \cdot                             |
+| 圈                    | $\circ$                            | \circ                             |
+| 星号                  | $\ast$                             | \ast                              |
+| 克罗内克积            | $\bigotimes$                       | \bigotimes                        |
+| 异或                  | $\bigoplus$                        | \bigoplus                         |
+| 小于等于              | $\leq$                             | \leq                              |
+| 大于等于              | $\geq$                             | \geq                              |
+| 不等于                | $\neq$                             | \neq                              |
+| 约等于                | $\approx$                          | \approx                           |
+| N元乘积	∏ \prod    | $\prod$                            | \prod                             |
+| N元余积               | $\coprod$                          | \coprod                           |
+| 省略号                | $\cdots$                           | \cdots                            |
+| 积分                  | $\int$                             | \int                              |
+| 双重积分              | $\iint$                            | \iint                             |
+| 曲线积分              | $\oint$                            | \oint                             |
+| 无穷                  | $\infty$                           | \infty                            |
+| 右箭头                | $$\rarr$$                          | \rarr                             |
+| 右胖箭头              | $\Rarr$                            | \Rarr                             |
+| 左箭头                | $$\larr$$                          | \larr                             |
+| 左胖箭头              | $\Larr$                            | \Larr                             |
+| 上箭头                | $\uarr$                            | \uarr                             |
+| 上胖箭头              | $\Uarr$                            | \Uarr                             |
+| 下箭头                | $\darr$                            | \darr                             |
+| 下胖箭头              | $\Darr$                            | \Darr                             |
+| 上下双向箭头          | $\updownarrow$                     | \updownarrow                      |
+| 上下双向胖箭头        | $\Updownarrow$                     | \Updownarrow                      |
+| 左右双向箭头          | $\lrarr$                           | \lrarr                            |
+| 左右双向胖箭头        | $\Lrarr$                           | \Lrarr                            |
+| 任意一个              | $\forall$                          | \forall                           |
+| 任选一个              | $\exists$                          | \exists                           |
+| 极限lim               | $\lim\limits_{x\rarr0}\frac{a}{b}$ | \lim\limits_{x\rarr0}\frac{a}{b}$ |
 
 
 
