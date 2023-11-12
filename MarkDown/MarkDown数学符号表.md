@@ -7,12 +7,14 @@
 |$\alpha$|\\alpha|A|\\Alpha|
 |*β*|\beta|B|\Beta|
 |$\gamma$|\gamma|Γ|\Gamma|
-|$\delta$ 得他|\delta|$\Delta$|\Delta|
+|$\delta$|\delta|$\Delta$|\Delta|
 |$\epsilon$|\epsilon|$\Epsilon$|\Epsilon|
 |$\zeta$|\zeta|$\Zeta$|\Zeta|
 |$\eta$|\eta|$\Eta$|\Eta|
 |$\theta$|\theta|$\Theta$|\Theta|
 |$\iota$|\iota|$\Iota$|\Iota|
+|$\sigma$|\sigma|$\Sigma$|\Sigma|
+|$\mu$|\mu|$\Mu$|\Mu|
 
 数字符号表
 
