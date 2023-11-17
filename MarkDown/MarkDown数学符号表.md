@@ -62,6 +62,12 @@
 | 极限$\lim_{x \to 0}$    | $\lim_{x\to 0}$                  | \lim_{x\to 0}                   |
 | 根号$\sqrt{2}$          | $\sqrt{2}$                       | \sqrt{2}                        |
 | 指定方根号$\sqrt[4]{2}$ | $\sqrt[4]{2}$                    | \sqrt[4]{2}                     |
+| 包含于                  | $\subseteq$                      | \subseteq                       |
+| 包含                    | $\supseteq$                      | \supseteq                       |
+| 包含于                  | $\subset$                        | \subset                         |
+| 包含                    | $\supset$                        | \supset                         |
+| 真包含于                | $\subsetneq$                     | \subsetneq                      |
+| 真包含                  | $\supsetneq$                     | \supsetneq                      |
 
 
 
