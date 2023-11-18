@@ -35,6 +35,7 @@
 | 小于等于                | $\leq$                           | \leq                            |
 | 大于等于                | $\geq$                           | \geq                            |
 | 不等于                  | $\neq$                           | \neq                            |
+| 等价于                  | $\sim$                           | \sim                            |
 | 约等于                  | $\approx$                        | \approx                         |
 | N元乘积	∏ \prod      | $\prod$                          | \prod                           |
 | N元余积                 | $\coprod$                        | \coprod                         |
@@ -62,6 +63,14 @@
 | 极限$\lim_{x \to 0}$    | $\lim_{x\to 0}$                  | \lim_{x\to 0}                   |
 | 根号$\sqrt{2}$          | $\sqrt{2}$                       | \sqrt{2}                        |
 | 指定方根号$\sqrt[4]{2}$ | $\sqrt[4]{2}$                    | \sqrt[4]{2}                     |
+| 属于                    | $\in$                            | \in                             |
+| 不属于                  | $\notin$                         | \notin                          |
+| 子集                    | $\subset$                        | \subset                         |
+| 实数集                  | $\mathbb R$                      | \mathbb R                       |
+| 复数集                  | $\mathbb C$                      | \mathbb C                       |
+| 整数集                  | $\mathbb Z$                      | \mathbb Z                       |
+| 自然数集                | $\mathbb N$                      | \mathbb N                       |
+| 空集                    | $\emptyset$                      | \emptyset                       |
 | 包含于                  | $\subseteq$                      | \subseteq                       |
 | 包含                    | $\supseteq$                      | \supseteq                       |
 | 包含于                  | $\subset$                        | \subset                         |
