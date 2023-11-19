@@ -61,7 +61,7 @@ $ bower install axios
 
 执行 `GET` 请求
 
-```
+```javascript
 // 为给定 ID 的 user 创建请求
 axios.get('/user?ID=12345')
   .then(function (response) {
