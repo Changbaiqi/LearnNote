@@ -154,9 +154,9 @@ Lock接口
 > ```java
 > Lock l = ...  l.lock(); //加锁
 > try{
->     // access the resource protected by this lock
+>        // access the resource protected by this lock
 > } finally {
->     l.unlock();  //解锁
+>        l.unlock();  //解锁
 > }
 > ```
 >
@@ -181,33 +181,33 @@ Lock接口
 >
 > ```java
 > public class SaleTicketDemo {
->     public static void main(String[] args){
->         Ticket ticket = new Ticket();
+>        public static void main(String[] args){
+>            Ticket ticket = new Ticket();
 >         
->         new Thread(()->{for(int i =0 ; i < 40 ; ++i) ticket.sale();},"a").start();
->         new Thread(()->{for(int i =0 ; i < 40 ; ++i) ticket.sale();},"b").start();
->         new Thread(()->{for(int i =0 ; i < 40 ; ++i) ticket.sale();},"c").start();
+>            new Thread(()->{for(int i =0 ; i < 40 ; ++i) ticket.sale();},"a").start();
+>            new Thread(()->{for(int i =0 ; i < 40 ; ++i) ticket.sale();},"b").start();
+>            new Thread(()->{for(int i =0 ; i < 40 ; ++i) ticket.sale();},"c").start();
 >         
->     }
+>        }
 > }
 > 
 > class Ticket{
->     private int ticketNum = 30;
->     private Lock lock = new ReentrantLock();
+>        private int ticketNum = 30;
+>        private Lock lock = new ReentrantLock();
 >     
->     public void sale() {
->         lock.lock();
->         try {
->             if(this.ticketNum > 0) {
->                 System.out.println(Thread.currentThread().getName() + "购得第" + ticketNum-- + "张票, 剩余" + ticketNum + "张票");
->             }
->             Thread.sleep(10);
->         } catch (Exception e) {
->             e.printStackTrace();
->         } finally {
->             lock.unlock();
->         }
->     }
+>        public void sale() {
+>            lock.lock();
+>            try {
+>                if(this.ticketNum > 0) {
+>                    System.out.println(Thread.currentThread().getName() + "购得第" + ticketNum-- + "张票, 剩余" + ticketNum + "张票");
+>                }
+>                Thread.sleep(10);
+>            } catch (Exception e) {
+>                e.printStackTrace();
+>            } finally {
+>                lock.unlock();
+>            }
+>        }
 > }
 > ```
 
@@ -341,10 +341,10 @@ class  a{
             System.out.println(Thread.currentThread().getName()+">>"+nummber);
             condition.signalAll();
         }
-         catch (InterruptedException e) {
+        catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
-          lock.unlock();
+            lock.unlock();
         }
 
     }
