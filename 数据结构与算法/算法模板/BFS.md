@@ -81,7 +81,7 @@
 >                 //......
 > 
 >                 state[next[i][1]][next[i][0]]=1; //将即将要走的格子标记为走过
->                 data.offer(new int[]{next[i][0],next[i][0],point[2]+1}); //将要走的格子加入到队列
+>                 data.offer(new int[]{next[i][0],next[i][1],point[2]+1}); //将要走的格子加入到队列
 >             }
 >         }
 >         return minStep;
