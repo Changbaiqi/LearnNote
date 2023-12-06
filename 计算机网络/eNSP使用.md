@@ -66,6 +66,14 @@ sysname R1
 
 ![](images/f743e767a8014b61acc8ba78175ede5c.png)
 
+关闭烦人的提示信息：
+
+```
+un in en //关闭烦人的提示信息
+```
+
+
+
 路由配置IP地址：
 
 ```
@@ -82,7 +90,7 @@ gateway 192.168.1.254
 
 
 
-创建Vlan
+创建VLAN
 
 ```
 vlan 10 //这个意思是创建一个vlan 10组别
@@ -126,7 +134,7 @@ port link-type trunk //配置端口类型
 
 
 
-配置当前接口所属vlan
+配置当前接口所属VLAN
 
 ```
 port default vlan 10  //赔偿接口的所属vlan
