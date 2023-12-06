@@ -80,3 +80,55 @@ ip add 192.168.1.2 24
 gateway 192.168.1.254
 ```
 
+
+
+创建Vlan
+
+```
+vlan 10 //这个意思是创建一个vlan 10组别
+```
+
+
+
+进入对应接口并进行管理
+
+```
+int g 0/0/1 //意思是进入001号接口
+```
+
+配置接口类型为access类型
+
+```
+port link-type access //配置端口类型
+```
+
+配置接口类型为trunk类型
+
+```
+port link-type trunk //配置端口类型
+```
+
+关于accss和truck端口的区别：
+
+> 1、端口用途不同：truck端口为与其它交换机端口相连的VLAN汇聚口，access端口为交换机与VLAN域中主机相连的端口；
+>
+> 2、trunk一般是打tag标记的，一般只允许打了该tag标记的vlan通过，所以该端口可以允许多个打tag标记的vlan通过，而accss端口一般是untag不大标记的端口，而且一个access vlan端口只允许一个access vlan 通过。
+>
+> Access类型端口：只能属于1个VLAN，一般用于连接计算机端口；
+>
+> Trunk类型端口：可以允许多个VLAN通过,可以接收和发送多个VLAN 报文,
+>
+> 一般用于交换机与交换机相关的接口。
+>
+> Hybrid类型端口：可以允许多个VLAN通过，可以接收和发送多个VLAN 报文，
+>
+> 可以用于交换机的间连接也可以用于连接用户计算机。
+
+
+
+配置当前接口所属vlan
+
+```
+port default vlan 10  //赔偿接口的所属vlan
+```
+
