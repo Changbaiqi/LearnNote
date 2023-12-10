@@ -16,6 +16,19 @@
 |$\iota$|\iota|$\Iota$|\Iota|
 |$\sigma$|\sigma|$\Sigma$|\Sigma|
 |$\mu$|\mu|$\Mu$|\Mu|
+|$\lambda$|\lambda|$\Lambda$|\Lambda|
+|$\omega$|\omega|$\Omega$|\Omega|
+|$\nu$|\nu|$\Nu$|\Nu|
+|$\pi$|\pi|$\Pi$|\Pi|
+|$\tau$||||
+|$\zeta$||||
+|$\kappa$||||
+|$\psi$||||
+|$\rho$||||
+|$\varrho$||||
+|$\xi$||||
+|$\partial$|\partial|||
+|$\phi$|\phi|$\Phi$|\Phi|
 
 ## 数字符号表
 
@@ -32,6 +45,8 @@
 | 星号                    | $\ast$                           | \ast                            |
 | 克罗内克积              | $\bigotimes$                     | \bigotimes                      |
 | 异或                    | $\bigoplus$                      | \bigoplus                       |
+| 同或运算                | $\bigodot$                       | \bigodot                        |
+| 向量符号                | $\vec{字母}$                     | \vec{字母}                      |
 | 小于等于                | $\leq$                           | \leq                            |
 | 大于等于                | $\geq$                           | \geq                            |
 | 不等于                  | $\neq$                           | \neq                            |
