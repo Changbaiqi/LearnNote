@@ -2,6 +2,22 @@
 
 ---
 
+
+
+## 创建Vue项目的命令：
+
+```node
+npm init vue@latest
+```
+
+
+
+## 文件结构
+
+![](Img/Vue/Snipaste_2023-12-27_20-04-49.png)
+
+
+
 ## v-text：
 
 ```vue

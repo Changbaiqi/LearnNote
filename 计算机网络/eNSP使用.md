@@ -96,6 +96,10 @@ gateway 192.168.1.254
 vlan 10 //这个意思是创建一个vlan 10组别
 ```
 
+```
+vlan batch 10 20 30 //
+```
+
 
 
 进入对应接口并进行管理
@@ -110,11 +114,25 @@ int g 0/0/1 //意思是进入001号接口
 port link-type access //配置端口类型
 ```
 
+配置当前端口为指定vlan放行
+
+```
+port default vlan 10 //这里就是指定放行或者说接入vlan10
+```
+
+
+
 配置接口类型为trunk类型
 
 ```
 port link-type trunk //配置端口类型
 ```
+
+```
+port trunk allow-pass vlan all  //这个意思就是设置trunk为放行所有的vlan
+```
+
+
 
 关于accss和truck端口的区别：
 
@@ -137,6 +155,185 @@ port link-type trunk //配置端口类型
 配置当前接口所属VLAN
 
 ```
-port default vlan 10  //赔偿接口的所属vlan
+port default vlan 10  //配置接口的所属vlan
 ```
 
+```
+dis vlan   //查看vlan配置
+```
+
+
+
+
+
+开启DHCP功能
+
+```
+dhcp enable
+```
+
+创建IP地址池
+
+```
+ip pool aa
+```
+
+给IP地址池添加IP地址网段
+
+```
+network 10.1.1.0 mask 24
+```
+
+给ip地址配置网关
+
+```
+gateway-list 10.1.1.1
+```
+
+配置DNS
+
+```
+dns-list 1.1.1.1
+```
+
+选择DHCP配置方式
+
+```
+dhcp select global
+```
+
+查看所有对应端口配置
+
+````
+dis port vlan //
+````
+
+查看跳表
+
+```
+tracert xxx.xxx.xxx.xxx 
+```
+
+创建链路聚合
+
+```
+in eth 1 //创建链路聚合，标签为1
+```
+
+进入链路聚合标签
+
+```
+in eth1 //进入链路聚合标签1
+```
+
+将当前接口添加到指定标签的链路聚合里面
+
+```
+eth 1 //把当前接口加入到标签名称为1的链路聚合里面，记住此指令必须要先进入需要加入的接口才能使用
+```
+
+设定acl
+
+```
+acl 2000 //这里2000-2999指的是基本acl
+acl 3000-3999  //这里是高级acl，功能指定更多
+```
+
+详细参考：
+
+[华为-ACL-访问控制列表（基础理论与配置实验详解）_ensp设置acl自动排序-CSDN博客](https://blog.csdn.net/BIGmustang/article/details/107662274)
+
+设定rule
+
+```
+rule 1 premit source 172.16.1.0 0.0.0.255
+//这里意思是允许所有172.16.1.x网段的ip给过
+```
+
+**这里一定要注意，默认情况下，是所有流量都给直接通过，所以要拦截的时候一定要注意设定好deny any**
+
+
+
+
+
+## 如何配置虚拟用户终端？
+
+---
+
+1、进入虚拟用户终点接口
+
+```
+uer-interface vty 0 4 //进入虚拟用户终端接口,这里0 4代表可以同时有5个用户登录
+authentication-mode password  //设置认证模式为密码认证
+set authentication password cipher huawei //设置密码为密文格式的“huawei”
+user privilege level 3 //设置用户权限等级为3，登录权限范围为0-15，其中0-2只具备用户视图权限，3-15具备系统视图权限（相当于最高权限）
+```
+
+
+
+
+
+
+
+## aaa模式认证
+
+---
+
+> AAA提供的安全服务具体是指：
+>
+> - 认证（Authentication）：是对用户的身份进行验证，判断其是否为合法用户。
+> - 授权（Authorization）：是对通过认证的用户，授权其可以使用哪些服务。
+> - 计费（Accounting）：是记录用户使用网络服务的资源情况，这些信息将作为计费的依据。
+
+>  配置aaa模式，设置账户为 admin 密码为123456（只是为了认证，才是简单密码），并设置用户等级为3
+>
+> ```
+> aaa
+> user
+> local-user admin password cipher 123456 privilege level 3
+> local-user admin service-type telnet //配置该用户的接类型为telnet
+> ```
+>
+>  进入VTY界面，将认证模式修改为aaa
+
+
+
+## 如何设置直接进入控制台就需要密码？
+
+> 设置密码：
+>
+> ```
+> user-interface console 0 //进入控制台
+> set authentication password cipher nihao mima
+> authenticcation-mode password 开启mima
+> idle-timeout 1 //设置时间
+> ```
+>
+> 取消密码：
+>
+> ```
+> user-interface console 0 //进入控制台
+> undo authenticcation-mode //取消掉密码
+> ```
+>
+
+
+
+
+
+## 路由如何和交换机通讯（ping通）
+
+> 注意！！！ 交换机对应路由相连接的接口一定要配置access，并且一定要绑定一个vlan，这个vlan也必须要有地址。不能使用trunk，不然无效！！！！！！！！！！！！！
+
+
+
+
+
+## 三步设置NAT：
+
+### 第一步：建立nat地址访问表（就是从这里出去访问外网的时候，用什么地址）
+
+> ```
+> nat address-group 1 64.1.1.4 64.1.1.4       //这个意思使用64.1.1.4到64.1.1.4这个区间的地址去访问
+> ```
+>
