@@ -16,7 +16,29 @@ npm init vue@latest
 
 ![](Img/Vue/Snipaste_2023-12-27_20-04-49.png)
 
+src:
 
+> 这个文件夹就是我们主要进行写代码的文件夹。
+
+page.json:
+
+> 这个文件包括了项目版本运行，以及依赖导入版本等，这个文件有点像maven的配置文件一样。
+
+vite.config.js:
+
+> 这个是Vue的配置文件，这里会进行一些额外的配置，比如跨域请求的设置，以及一些打包的配置等。
+
+
+
+Vue使用一种基于HTML的模板语法，使我们能够声明式地将其组件实例的数据绑定到呈现的DOM上。所有的Vue模板都是语法层面合法的HTML，可以被符合规范的浏览器和HTML解析器解析。
+
+
+
+文本插值：
+
+> 最基本的数据绑定形式是文本插值，它使用的是“Mustache”语法（即双大括号）：
+>
+> ![](Img/Vue/Snipaste_2023-12-27_20-17-59.png)
 
 ## v-text：
 
@@ -2347,3 +2369,10 @@ PC端常用UI组件库
 > Element UI：https://element.eleme.cn
 >
 > IView UI：https://www.iviewui.com
+
+
+
+
+
+
+
