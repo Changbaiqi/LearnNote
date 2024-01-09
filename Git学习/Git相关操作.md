@@ -37,6 +37,15 @@ git config --global user.email "你所想绑定的邮箱"
 
 
 
+### 查看当前git用户信息 
+
+```sh
+git config user.name  #查看用户名称 
+git config user.email #查看用户邮箱
+```
+
+
+
 
 
 ### 初始化仓库
@@ -165,6 +174,16 @@ ssh-keygen -t rsa -C "对应你的账号邮箱"
 > id_ras.pub是公钥，可以放心告诉其他任何人
 
 第二步：登录github,打开” settings”中的SSH Keys页面，然后点击“Add SSH Key”,填上任意title，在Key文本框里黏贴id_rsa.pub文件的内容。
+
+
+
+
+
+### 取消绑定远程仓库
+
+```sh
+git remote remove origin #这个origin是绑定时候的仓库标签别名
+```
 
 
 
