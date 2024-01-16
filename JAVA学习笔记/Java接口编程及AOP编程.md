@@ -1,3 +1,17 @@
+---
+title: Java注解编程及AOP编程
+date: 2018-09-07 09:25:00
+author: 长白崎
+categories:
+  - "Java"
+tags:
+  - "Java"
+  - "AOP"
+  - "注解编程"
+---
+
+
+
 # Java注解编程及AOP编程
 
 ---

@@ -1,3 +1,15 @@
+---
+title: 树形DP的讨论
+date: 2018-09-07 09:25:00
+author: 长白崎
+categories:
+  - "算法"
+tags:
+  - "DP"
+---
+
+
+
 # 树形DP的讨论
 
 ---

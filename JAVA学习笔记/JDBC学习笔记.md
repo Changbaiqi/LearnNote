@@ -1,4 +1,17 @@
-# JDBC
+---
+title: JDBC学习笔记
+date: 2018-09-07 09:25:00
+author: 长白崎
+categories:
+  - "Java"
+tags:
+  - "JDBC"
+  - "Java"
+---
+
+
+
+# JDBC学习笔记
 
 ***
 

@@ -1,3 +1,16 @@
+---
+title: Native-image技术与应用
+date: 2024-11-07 09:25:00
+author: 长白崎
+categories:
+  - "Java"
+tags:
+  - "Native-image"
+  - "Java"
+---
+
+
+
 # Native-image技术与应用
 
 ---

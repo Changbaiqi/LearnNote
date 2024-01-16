@@ -1,3 +1,15 @@
+---
+title: Ajax学习
+date: 2022-09-07 09:25:00
+author: 长白崎
+categories:
+  - "前端"
+tags:
+  - "JS"
+---
+
+
+
 AJAX特点
 
 优点

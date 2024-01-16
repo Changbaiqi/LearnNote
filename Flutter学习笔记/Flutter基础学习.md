@@ -1,3 +1,16 @@
+---
+title: Flutter基础学习笔记
+date: 2018-09-07 09:25:00
+author: 长白崎
+categories:
+  - "前端"
+tags:
+  - "Android"
+  - "Flutter"
+---
+
+
+
 # Flutter基础学习
 
 目录结构

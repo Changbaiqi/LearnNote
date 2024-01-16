@@ -1,3 +1,17 @@
+---
+title: SpringMVC简介
+date: 2018-09-07 09:25:00
+author: 长白崎
+categories:
+  - "Java"
+  - "Spring"
+tags:
+  - "Java"
+  - "SpringMVC"
+---
+
+
+
 # SpringMVC简介
 
 ## 1.SpringMVC概述

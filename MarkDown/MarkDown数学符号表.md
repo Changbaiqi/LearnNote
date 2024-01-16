@@ -1,3 +1,16 @@
+---
+title: MarkDown数学符号收集表
+date: 2018-09-07 09:25:00
+author: 长白崎
+categories:
+  - "MarkDown"
+tags:
+  - "数学"
+  - "MarkDown"
+---
+
+
+
 # MarkDown数学符号收集表
 
 ***

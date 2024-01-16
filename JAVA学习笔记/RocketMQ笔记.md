@@ -1,3 +1,17 @@
+---
+title: RocketMQ学习
+date: 2018-09-07 09:25:00
+author: 长白崎
+categories:
+  - "Java"
+  - "消息队列"
+tags:
+  - "Java"
+  - "RocketMQ"
+---
+
+
+
 # RocketMQ学习
 
 ***

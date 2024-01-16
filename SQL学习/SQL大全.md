@@ -1,3 +1,16 @@
+---
+title: 常用SQL大全
+date: 2014-09-07 09:25:00
+author: 长白崎
+categories:
+  - "SQL"
+  - "数据库"
+tags:
+  - "SQL"
+---
+
+
+
 # 常用SQL大全
 
 ---

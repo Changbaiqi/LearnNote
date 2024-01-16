@@ -1,3 +1,15 @@
+---
+title: BP神经网络算法
+date: 2024-09-07 09:25:00
+author: 长白崎
+categories:
+  - "NN"
+tags:
+  - "BPNN"
+---
+
+
+
 # BP神经网络算法
 
 ---

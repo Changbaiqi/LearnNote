@@ -1,3 +1,16 @@
+---
+title: Java分层思想
+date: 2018-09-07 09:25:00
+author: 长白崎
+categories:
+  - "Java"
+  - "软件工程"
+tags:
+  - "Java"
+---
+
+
+
 # Java分层思想
 
 ***

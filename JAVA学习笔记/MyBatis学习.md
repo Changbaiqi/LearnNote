@@ -1,3 +1,16 @@
+---
+title: MyBatis框架学习
+date: 2018-09-07 09:25:00
+author: 长白崎
+categories:
+  - "Java"
+tags:
+  - "MyBatis"
+  - "Java"
+---
+
+
+
 # MyBatis框架学习
 
 ## 1.常用的框架SSM：

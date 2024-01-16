@@ -1,3 +1,20 @@
+---
+title: SSM开发配置文档
+date: 2018-09-07 09:25:00
+author: 长白崎
+categories:
+  - "Java"
+  - "Spring"
+tags:
+  - "Java"
+  - "SSM"
+  - "SpringMVC"
+  - "Spring"
+  - "MyBatis"
+---
+
+
+
 # SSM开发配置文档
 
 ---

@@ -1,3 +1,15 @@
+---
+title: MySQL学习笔记
+date: 2023-09-07 09:25:00
+author: 长白崎
+categories:
+  - "MySql"
+tags:
+  - "MySql"
+---
+
+
+
 # MySQL学习笔记
 
 ***

@@ -1,3 +1,15 @@
+---
+title: Vue2学习
+date: 2022-09-07 09:25:00
+author: 长白崎
+categories:
+  - "前端"
+tags:
+  - "Vue"
+---
+
+
+
 # Vue
 
 ---

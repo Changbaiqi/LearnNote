@@ -1,3 +1,14 @@
+---
+title: Java之Servlet学习
+date: 2018-09-07 09:25:00
+author: 长白崎
+categories:
+  - "Java"
+tags:
+  - "Java"
+  - "Servlet"
+---
+
 
 
 # Java之Servlet学习
