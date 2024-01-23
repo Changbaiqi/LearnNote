@@ -3,8 +3,8 @@ title: SpringCloud学习笔记
 date: 2018-09-07 09:25:00
 author: 长白崎
 categories:
-  - "Spring"
-  - "Java"
+  - ["Spring"]
+  - ["Java"]
 tags:
   - "SpringCloud"
   - "Java"
@@ -52,7 +52,7 @@ Eureka是Netflix贡献给Spring Cloud的一个框架！Netflix给Spring Cloud贡
 
 @EnableEurekaServer注解：开启eureka的注册中心的功能（在SpringBoot启动函数上面添加）
 
-![](图片文件\Eureka界面.png)
+![Eureka界面](./SpringCloud学习笔记/images/Eureka界面.png)
 
 DS replicas：集群相关信息
 
@@ -62,7 +62,7 @@ Status：实例 的状态和ID
 
 ## SpringCloud中的常用配置
 
-> ![](图片文件\SpringCloud\SpringCloud中的常用配置.png)
+> ![](./SpringCloud学习笔记/images/SpringCloud中的常用配置.png)
 
 
 
@@ -221,7 +221,7 @@ ribbon:
 
 ### 按什么顺序启动服务好
 
-> ![](图片文件\SpringCloud\SpringCloud中Ribbon负载均衡.png)
+> ![](./SpringCloud学习笔记/images/SpringCloud中Ribbon负载均衡.png)
 >
 > 最好先启动服务，再启动注册中心，然后再启动客户端（consumer）
 >
@@ -338,7 +338,7 @@ Hystrix是Netfix公司开源的一个项目，它提供了熔断器功能，能�
 
 设置拦截器：
 
-![](图片文件\SpringCloud\设置拦截器.png)
+![](./SpringCloud学习笔记/images/设置拦截器.png)
 
 ### 如何开启Hystrix：
 
@@ -418,7 +418,7 @@ hystrix本质是代理的feign的请求才能完成熔断的效果
 >
 > https://dl.bintray.com/openzipkin/maven/io/zipkin/java/zipkon-server/2.12.9/
 
-![](图片文件\SpringCloud\链路追踪1.png)
+![](./SpringCloud学习笔记/images/链路追踪1.png)
 
 ## Sleuth快速入门
 
@@ -521,7 +521,7 @@ spring:
 
 你出国或者回国都得经过海关才能进出自己的国家否则不准，网关也是这个意思。
 
-![](图片文件\SpringCloud\微服务网关.png)
+![](./SpringCloud学习笔记/images/微服务网关.png)
 
 网关可以承担的作用： 
 
@@ -704,11 +704,11 @@ cloud:
 
 ### 能够添加断言条件的有这些
 
-![](图片文件\SpringCloud\路由断言的条件使用有哪些.png)
+![](./SpringCloud学习笔记/images/路由断言的条件使用有哪些.png)
 
 比如：
 
-![](图片文件\SpringCloud\断言示例.png)
+![](./SpringCloud学习笔记/images/断言示例.png)
 
 默认不能作用在动态路由上
 
@@ -722,7 +722,7 @@ cloud:
 
 gateway里面的过滤器和Servlet里面的过滤器，功能差不多，路由过滤器可以用于修改进入Http请求的返回Http响应
 
-![](图片文件\SpringCloud\Filter过滤器.png)
+![](./SpringCloud学习笔记/images/Filter过滤器.png)
 
 ### 分类
 
@@ -750,7 +750,7 @@ GlobalFilter  全局过滤器，不需要配置路由，系统初始化作用到
 
 ### GlobalFilter过滤器使用：
 
-![](图片文件\SpringCloud\GlobalFilter使用.png)
+![](./SpringCloud学习笔记/images/GlobalFilter使用.png)
 
 ```java
 
@@ -1050,7 +1050,7 @@ Spring Cloud Alibaba 致力于提供微服务开发的一站式解决方案。�
 
 ### 组件
 
-![](图片文件\SpringCloud\SpringCloud组件.png)
+![](./SpringCloud学习笔记/images/SpringCloud组件.png)
 
 
 
@@ -1064,7 +1064,7 @@ Nacos帮助您更敏捷和容易地构建、交付和管理微服务平台、Nac
 
 ### Nacos的核心概念
 
-![](图片文件\SpringCloud\Nacos的核心概念.png)
+![](./SpringCloud学习笔记/images/Nacos的核心概念.png)
 
 ### 服务（Service）
 
@@ -1110,23 +1110,23 @@ NacosServer相对于EurekaServer，只不过EurekaServer使我们自己搭建的
 
 先在官网下载好Nacos，Nacos是一个jar包，直接启动即可。然后就是配置好里面的配置文件，现在conf文件里面修改properties内的数据库连接这些：
 
-![](图片文件\SpringCloud\Nacos配置文件1.png)
+![](./SpringCloud学习笔记/images/Nacos配置文件1.png)
 
-![Nacos数据库配置](F:\JAVA学习笔记\图片文件\SpringCloud\Nacos数据库配置.png)
+![Nacos数据库配置](F:\JAVA学习笔记\./SpringCloud学习笔记/images/Nacos数据库配置.png)
 
 Nacos默认为集群配置，如果是想设置成单个若没有改启动模式为单个那么会报错，修改的地方直接在start文件里面改就行：
 
-![](F:\JAVA学习笔记\图片文件\SpringCloud\Nacos启动模式设定.png)
+![](F:\JAVA学习笔记\./SpringCloud学习笔记/images/Nacos启动模式设定.png)
 
 #### Java编写配置：
 
 首先要导入Nacos的依赖，Spring官方可能没有依赖的直接选择项，可以切换依赖来源网站为：http://www.start.alibaba.com
 
-![](图片文件\SpringCloud\阿里巴巴spring来源配置.png)
+![](./SpringCloud学习笔记/images/阿里巴巴spring来源配置.png)
 
 然后进行Nacos依赖选择：
 
-![](图片文件\SpringCloud\Nacosjava依赖选择.png)
+![](./SpringCloud学习笔记/images/Nacosjava依赖选择.png)
 
 #### Nacos的基本yml配置：
 
@@ -1203,9 +1203,9 @@ public class NacosGatewayApplication {
 
 ### 常用Nacos中yaml文件配置代码：
 
-![](图片文件\SpringCloud\Nacos常用配置1.png)
+![](./SpringCloud学习笔记/images/Nacos常用配置1.png)
 
-![](图片文件\SpringCloud\Nacos常用配置2.png)
+![](./SpringCloud学习笔记/images/Nacos常用配置2.png)
 
 
 
@@ -1219,7 +1219,7 @@ public class NacosGatewayApplication {
 
 只要配置文件修改了对应的服务就可以动态感知到不需要重启
 
-![](图片文件\SpringCloud\Nacos配置文件中心.png)
+![](./SpringCloud学习笔记/images/Nacos配置文件中心.png)
 
 ### 配置文件中心配置方式
 
@@ -1227,7 +1227,7 @@ public class NacosGatewayApplication {
 
 需要先在Nacos端创建好配置文件的组：
 
-![](图片文件\SpringCloud\Nacos配置文件.png)
+![](./SpringCloud学习笔记/images/Nacos配置文件.png)
 
 Data id：对应的存储id
 
@@ -1235,7 +1235,7 @@ Group：对应的组别
 
 #### Java端：
 
-![](图片文件\SpringCloud\Nacos的java配置1.png)
+![](./SpringCloud学习笔记/images/Nacos的java配置1.png)
 
 ```yaml
 server:
@@ -1278,7 +1278,7 @@ SpringBoot的2.4版本后strap与原本的SpringBoot分离了，所以需要重�
 
 然后就是Java内容的引用：
 
-![](图片文件\SpringCloud\Nacos的java配置2.png)
+![](./SpringCloud学习笔记/images/Nacos的java配置2.png)
 
 @RefreshScope注解的作用是让这个类里面的所有Value注解都能随着配置文件中心的属性而变化。
 
@@ -1336,7 +1336,7 @@ spring:
             regresh: false # 是否支持刷新  这里不去动态 刷新
 ```
 
-![](图片文件\SpringCloud\Nacos多配置文件读取.png)
+![](./SpringCloud学习笔记/images/Nacos多配置文件读取.png)
 
 ### 公共配置文件配置：
 
@@ -1363,15 +1363,15 @@ spring:
             refresh: true
 ```
 
-![](图片文件\SpringCloud\Nacos公共配置文件读取.png)
+![](./SpringCloud学习笔记/images/Nacos公共配置文件读取.png)
 
 
 
 Nacos常用配置：
 
-![](图片文件\SpringCloud\Nacos配置中心常用配置1.png)
+![](./SpringCloud学习笔记/images/Nacos配置中心常用配置1.png)
 
-![](图片文件\SpringCloud\Nacos配置中心常用配置2.png)
+![](./SpringCloud学习笔记/images/Nacos配置中心常用配置2.png)
 
 ### 两端的配置文件写什么内容
 
@@ -1391,15 +1391,15 @@ Nacos常用配置：
 
 ### 单体结构：
 
-> ![](图片文件\SpringCloud\单体结构图.png)
+> ![](./SpringCloud学习笔记/images/单体结构图.png)
 
 ### 分布式聚合项目：
 
-> ![](图片文件\SpringCloud\分布式聚合项目.png)
+> ![](./SpringCloud学习笔记/images/分布式聚合项目.png)
 
 ### 分布式聚合项目优化方案1：
 
-> ![](图片文件\SpringCloud\分布式耦合项目优化方案1.png)
+> ![](./SpringCloud学习笔记/images/分布式耦合项目优化方案1.png)
 >
 > 其中将原本的mapper、service、web整合成了core或者enter。
 >
@@ -1407,7 +1407,7 @@ Nacos常用配置：
 
 分布式聚合项目优化方案2：
 
-> ![](F:\JAVA学习笔记\图片文件\SpringCloud\分布式聚合项目优化方案2.png)
+> ![](F:\JAVA学习笔记\./SpringCloud学习笔记/images/分布式聚合项目优化方案2.png)
 >
 > 之间的依赖关系明显比方案一少，清晰。
 

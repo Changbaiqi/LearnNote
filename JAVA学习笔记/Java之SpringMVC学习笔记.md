@@ -3,8 +3,8 @@ title: SpringMVC简介
 date: 2018-09-07 09:25:00
 author: 长白崎
 categories:
-  - "Java"
-  - "Spring"
+  - ["Java"]
+  - ["Spring"]
 tags:
   - "Java"
   - "SpringMVC"
@@ -81,7 +81,7 @@ tags:
 * 它具备IOC和AOP
 * 完全基于注解开发
 
-![](图片文件\SpringMVC\SSM项目信息处理图.png)
+![SSM项目信息处理图](./Java之SpringMVC学习笔记/images/SSM项目信息处理图.png)
 
 > 请求（client）经过顺序：
 >
@@ -89,7 +89,7 @@ tags:
 
 ### 6.2.SpringMVC执行的流程
 
-> ![](图片文件\SpringMVC\SpringMVC执行流程图.png)
+> ![SpringMVC执行流程图](./Java之SpringMVC学习笔记/images/SpringMVC执行流程图.png)
 
 ## 7.基于注解的SpringMVC框架开发的步骤
 
@@ -97,17 +97,17 @@ tags:
 
 * 修改目录，添加缺失的test，java，resources（两套），并修改目录属性
 
-  > ![](图片文件\SpringMVC\文件配置.png)
+  > ![文件配置](./Java之SpringMVC学习笔记/images/文件配置.png)
 
 * 修改pom.xml文件，添加SpringMVC的依赖，添加Servlet的依赖
 
-  > ![](图片文件\SpringMVC\包依赖.png)
+  > ![包依赖](./Java之SpringMVC学习笔记/images/包依赖.png)
   >
-  > ![](图片文件\SpringMVC\build配置.png)
+  > ![build配置](./Java之SpringMVC学习笔记/images/build配置.png)
 
 * 添加SpringMVC.xml配置文件，指定包扫描（因为要基于注解开发），添加视图解析器。
 
-  >![](图片文件\SpringMVC\SpringMVC配置文件.png)
+  >![SpringMVC配置文件](./Java之SpringMVC学习笔记/images/SpringMVC配置文件.png)
 
 * 删除web.xml文件，新建web.xml
 
@@ -206,7 +206,7 @@ tags:
 
 * 此注解可以加在类上，相当于是包名（虚拟路径） ,区分不同类中相同的action的名称
 
-  >![](图片文件\SpringMVC\RequestMapping虚拟路径.png)
+  >![RequestMapping虚拟路径](./Java之SpringMVC学习笔记/images/RequestMapping虚拟路径.png)
   >
   >那么如果想要访问这个demo的路径将会变为.../user/demo........
 
@@ -315,7 +315,7 @@ tags:
 
 ​	配置过滤器：
 
-> ![](图片文件\SpringMVC\中文编码过滤器配置.png)
+> ![中文编码过滤器配置](./Java之SpringMVC学习笔记/images/中文编码过滤器配置.png)
 
 ## 8.action方法的返回值
 
@@ -359,7 +359,7 @@ tags:
 >
 >注意在springmvc配置文件当中添加注解驱动
 >
->![](图片文件\SpringMVC\Ajax注解驱动.png)
+>![Ajax注解驱动](./Java之SpringMVC学习笔记/images/Ajax注解驱动.png)
 
 ## 10.请求跳转
 
@@ -472,7 +472,7 @@ DataAction.java
    >
    > ==一定要记得添加注解驱动！！！！==
    >
-   > ![](图片文件\SpringMVC\日期注解驱动.png)
+   > ![日期注解驱动](./Java之SpringMVC学习笔记/images/日期注解驱动.png)
 
 #### B. 类中全局日期处理
 

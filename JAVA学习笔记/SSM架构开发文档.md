@@ -3,8 +3,8 @@ title: SSM开发配置文档
 date: 2018-09-07 09:25:00
 author: 长白崎
 categories:
-  - "Java"
-  - "Spring"
+  - [Java]
+  - [Spring]
 tags:
   - "Java"
   - "SSM"
@@ -36,13 +36,13 @@ tags:
 
 ### 1.新建项目，选择webapp模板
 
-> ![](图片文件\SSM架构整合\创建项目.png)
+> ![](./SSM架构开发文档/images/创建项目.png)
 
 
 
 ### 2.修改目录，添加缺失的test，java，resources（两套），如果目录没有属性标识记得修改属性
 
-> ![](图片文件\SpringMVC\文件配置.png)
+> ![](./SSM架构开发文档/images/文件配置.png)
 
 ### 3.修改pom.xml文件，添加Spring套件和MyBatis套件的依赖等等
 
@@ -317,7 +317,7 @@ tags:
 
 ### 4.删除系统自动创建的web.xml文件，新建web.xml
 
-> ![](图片文件\SSM架构整合\web文件的创建.png)
+> ![](./SSM架构开发文档/images/web文件的创建.png)
 
 
 
@@ -325,7 +325,7 @@ tags:
 
 > 这里就直接使用模板自己原本配置的模板
 >
-> ![](图片文件\SSM架构整合\SqlMapConfig模板.png)
+> ![](./SSM架构开发文档/images/SqlMapConfig模板.png)
 >
 > SqlMapConfig.xml
 >
@@ -348,7 +348,7 @@ tags:
 
 ### 6.添加服务器连接配置，例如：jdbc.properties
 
-> ![](图片文件\SSM架构整合\jdbc的配置.png)
+> ![](./SSM架构开发文档/images/jdbc的配置.png)
 >
 > jdbc.properties
 >
@@ -363,7 +363,7 @@ tags:
 
 ### 7. 添加数据访问层的配置（Mapper），例如：ApplicationContext_mapper.xml
 
-> ![](F:\JAVA学习笔记\图片文件\SSM架构整合\ApplicationContext_mapper.png)
+> ![](F:\JAVA学习笔记\./SSM架构开发文档/images/ApplicationContext_mapper.png)
 >
 > ```xml
 > <?xml version="1.0" encoding="UTF-8"?>
@@ -407,7 +407,7 @@ tags:
 
 ### 8.添加业务逻辑层的配置（Service），例如：ApplicationContext_service.xml
 
->![](图片文件\SSM架构整合\ApplicationContext_service.png)
+>![](./SSM架构开发文档/images/ApplicationContext_service.png)
 >
 >```xml
 ><?xml version="1.0" encoding="UTF-8"?>
@@ -459,7 +459,7 @@ tags:
 
 ### 9.添加SpringMVC的配置，指定包扫描（因为要基于注解开发），添加视图解析器(如果是基于ajax开发那么可以忽略这一步，如果jsp那么就需要)。例如：springmvc.xml
 
-> ![](图片文件\SSM架构整合\springmvc配置.png)
+> ![](./SSM架构开发文档/images/springmvc配置.png)
 >
 > ```xml
 > <?xml version="1.0" encoding="UTF-8"?>
@@ -488,7 +488,7 @@ tags:
 
 ### 10.在web.xml文件中设定好字符过滤器来不让其出现乱码现象，注册Spring框架、SpringMVC框架（所有的web请求都是基于servlet的）
 
-> ![](图片文件\SSM架构整合\web中的配置.png)
+> ![](./SSM架构开发文档/images/web中的配置.png)
 >
 > ```xml
 > <?xml version="1.0" encoding="UTF-8"?>

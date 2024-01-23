@@ -16,7 +16,7 @@ tags:
 ---
 流程图：
 
-![](F:\JAVA学习笔记\图片文件\Snipaste_2022-04-13_00-37-31.png)
+![Snipaste_2022-04-13_00-37-31](./Java之Servlet学习笔记/images/Snipaste_2022-04-13_00-37-31.png)
 
 ## **一、Servlet规范介绍：**
 
@@ -126,7 +126,7 @@ tags:
 >
 > http://localhost:8080/myWeb/one
 >
-> ![image-20220412022719609](图片文件\Snipaste_2022-04-12_02-27-53.png)
+> ![Snipaste_2022-04-12_02-27-53](./Java之Servlet学习笔记/images/Snipaste_2022-04-12_02-27-53.png)
 
 ---
 
@@ -238,11 +238,11 @@ tags:
 >
 > ​       【请求对象】和【响应对象】相当于用户在服务端的代言人
 
-![](图片文件\用户注册流程.png)
+![用户注册流程](./Java之Servlet学习笔记/images/用户注册流程.png)
 
 上图涉及到数据库操作，其中DAO是自己所写的一个数据库操作封装类，其主要是分层思想，详情下图：
 
-> ![](图片文件\分层思想.png)
+> ![分层思想](./Java之Servlet学习笔记/images/分层思想.png)
 
 默认欢迎资源文件：
 
@@ -301,7 +301,7 @@ Tomcat对于默认欢迎资源文件定位规则：
 >
 > ​		最有特征 100：通知浏览器本次返回的资源文件并不是一个独立		的资源文件，需要浏览器在接受响应包之后，，继续向Http服务		器所要依赖的其他资源文件
 >
-> ![](图片文件\响应码1XX.png)
+> ![响应码1XX](./Java之Servlet学习笔记/images/响应码1XX.png)
 >
 >* 2XX：
 >
@@ -378,7 +378,7 @@ Tomcat对于默认欢迎资源文件定位规则：
 
 ## 十一、请求转发解决方案：
 
-> ![](图片文件\转发实现多资源访问.png)
+> ![转发实现多资源访问](./Java之Servlet学习笔记/images/转发实现多资源访问.png)
 >
 > 1.原理：用户第一次通过手动方式要求浏览器访问OneServlet。OneServler工作完毕后，通过当前的请求对象代替浏览器向Tomcat发送请求，申明调用TwoServlet。Tomcat在接收到这个请求后，自动调用TwoServlet来完成剩余任务。
 >
@@ -481,7 +481,7 @@ TwoServlet{
 }
 ```
 
-![](图片文件\ServletContext实例对象.png)
+![ServletContext实例对象](./Java之Servlet学习笔记/images/ServletContext实例对象.png)
 
 ***
 
@@ -508,7 +508,7 @@ TwoServlet{
 >
 > 此时TwoServlet在运行时，就可以通过读取请求头中cookie中信息，得到OneServlet提供的共享数据
 >
-> ![](图片文件\Cookie原理.png)
+> ![Cookie原理](./Java之Servlet学习笔记/images/Cookie原理.png)
 
 ### 3.实现命令：同一个网站OneServlet与TwoServlet借助于Cookie实现数据共享
 
@@ -530,7 +530,7 @@ TwoServlet{
 > }
 > ```
 >
-> ![](图片文件\浏览器and用户流程图.png)
+> ![浏览器and用户流程图](./Java之Servlet学习笔记/images/浏览器and用户流程图.png)
 > ```java
 > TwoServlet{
 >     public void doGet( HttpServletRequest request,HttpServletResponse resp)
@@ -548,7 +548,7 @@ TwoServlet{
 > }
 > ```
 >
-> ![](图片文件\网站订餐简单思路.png)
+> ![网站订餐简单思路](./Java之Servlet学习笔记/images/网站订餐简单思路.png)
 >
 
 ### 4.Cookie销毁时机：
@@ -630,11 +630,11 @@ TwoServlet{
 
 ### 4.HttpSession与用户关联的原理图：
 
-![](图片文件\HttpSession与用户关联的原理图.png)
+![HttpSession与用户关联的原理图](./Java之Servlet学习笔记/images/HttpSession与用户关联的原理图.png)
 
 ### 5.HttpSession实现购物车原理图：
 
-![](图片文件\HttpSession实现购物车原理图.png)
+![HttpSession实现购物车原理图](./Java之Servlet学习笔记/images/HttpSession实现购物车原理图.png)
 
 ### 6.getSession()与getSession(false)区别：
 > * #### getSession()：
@@ -730,11 +730,11 @@ TwoServlet{
 >
 > 重写监听接口：
 >
-> ![](图片文件\重写ServletContextListener接口.png)
+> ![重写ServletContextListener接口](./Java之Servlet学习笔记/images/重写ServletContextListener接口.png)
 >
 > 在Tomcat中注册监听接口实现类：
 >
-> ![](图片文件\注册Servlet监听接口.png)
+> ![注册Servlet监听接口](./Java之Servlet学习笔记/images/注册Servlet监听接口.png)
 
 
 
@@ -768,7 +768,7 @@ TwoServlet{
 >
 > 重写接口：
 >
-> ![](图片文件\重写ServletContextAttributeListener.png)
+> ![重写ServletContextAttributeListener](./Java之Servlet学习笔记/images/重写ServletContextAttributeListener.png)
 >
 > 注册监听接口实现类：
 >
@@ -813,11 +813,11 @@ TwoServlet{
 
 > 使用：
 >
-> ![](图片文件\Filter基础使用例子.png)
+> ![Filter基础使用例子](./Java之Servlet学习笔记/images/Filter基础使用例子.png)
 >
 > 在web.xml注册：
 >
-> ![](图片文件\Filter在web中注册的例子.png)
+> ![Filter在web中注册的例子](./Java之Servlet学习笔记/images/Filter在web中注册的例子.png)
 
 ### 5.Filter拦截地址格式：
 
@@ -852,8 +852,8 @@ TwoServlet{
 
 ### 6.拦截恶意访问流程图：
 
-> ![](图片文件\拦截恶意访问流程图.png)
+> ![拦截恶意访问流程图](./Java之Servlet学习笔记/images/拦截恶意访问流程图.png)
 
 互联网通信流程图：
 
-> ![](图片文件\互联网通信流程图.png)
+> ![互联网通信流程图](./Java之Servlet学习笔记/images/互联网通信流程图.png)

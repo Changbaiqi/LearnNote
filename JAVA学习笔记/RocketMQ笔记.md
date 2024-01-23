@@ -3,8 +3,8 @@ title: RocketMQ学习
 date: 2018-09-07 09:25:00
 author: 长白崎
 categories:
-  - "Java"
-  - "消息队列"
+  - ["Java"]
+  - ["消息队列"]
 tags:
   - "Java"
   - "RocketMQ"
@@ -32,7 +32,7 @@ tags:
 
 发送者把消息发给消息服务器[MQ]，消息服务器把消息存放在若干**主题**中，在合适的时候，消息服务器会把消息转发给接受者。在这个过程中，发送和接受是异步的,也就是发送无需等待，发送者和接受者的生命周期也没有必然关系在发布pub/订阅sub模式下，也可以完成一对多的通信，可以让一个消息有多个接受者[微信订阅号就是这样的]
 
-![](.\图片文件\RocketMQ\Snipaste_2023-09-20_22-12-22.png)
+![](./RocketMQ笔记/images/Snipaste_2023-09-20_22-12-22.png)
 
 ## 2.	为什么用MQ：
 
@@ -52,7 +52,7 @@ tags:
 
 ---
 
-![](.\图片文件\RocketMQ\图片1.png)
+![](./RocketMQ笔记/images/图片1.png)
 
 
 
@@ -68,7 +68,7 @@ tags:
 
 ### 4.1	常见MQ产品比较：
 
-![](.\图片文件\RocketMQ\Snipaste_2023-09-20_22-14-18.png)
+![](./RocketMQ笔记/images/Snipaste_2023-09-20_22-14-18.png)
 
 ## 5.	RocketMQ介绍：
 
@@ -106,7 +106,7 @@ tags:
 >
 > **消息发送的流程是，Producer询问NameServer，NameServer分配一个broker 然后Consumer也要询问NameServer，得到一个具体的broker，然后消费消息**
 
-![](.\图片文件\RocketMQ\图片3.png)
+![](./RocketMQ笔记/images/图片3.png)
 
 
 
@@ -114,7 +114,7 @@ tags:
 
 ***
 
-![](.\图片文件\RocketMQ\图片4.png)
+![](./RocketMQ笔记/images/图片4.png)
 
 
 
@@ -136,7 +136,7 @@ yum install unzip
 
 目录分析：
 
-![](.\图片文件\RocketMQ\图片5.png)
+![](./RocketMQ笔记/images/图片5.png)
 
 > benchmark：包含一些性能测试的脚本；
 >
@@ -170,7 +170,7 @@ export NAMESRV_ADDR=阿里云公网IP:9876
 vim runserver.sh
 ```
 
-![](.\图片文件\RocketMQ\图片6.png)
+![](./RocketMQ笔记/images/图片6.png)
 
 保存退出
 
@@ -178,7 +178,7 @@ vim runserver.sh
 
 进入bin目录下，修改runbroker.sh，修改67行
 
-![](.\图片文件\RocketMQ\图片7.png)
+![](./RocketMQ笔记/images/图片7.png)
 
 保存退出
 
@@ -213,7 +213,7 @@ brokerIP1：broker也需要一个公网IP，如果不指定，那么是阿里云
 
 mkdir logs
 
-![](.\图片文件\RocketMQ\图片8.png)
+![](./RocketMQ笔记/images/图片8.png)
 
 一次运行两条命令
 
@@ -231,7 +231,7 @@ nohup sh bin/mqbroker -c conf/broker.conf > ./logs/broker.log &
 
 查看启动结果
 
-![](.\图片文件\RocketMQ\图片9.png)
+![](./RocketMQ笔记/images/图片9.png)
 
 ### 7.8	RocketMQ控制台的安装RockerMQ-Console
 
@@ -251,9 +251,9 @@ https://github.com/apache/rocketmq-dashboard/archive/refs/tags/rocketmq-dashboar
 mvn clean package -Dmaven.test.skip=true
 ```
 
-![](.\图片文件\RocketMQ\图片10.png)
+![](./RocketMQ笔记/images/图片10.png)
 
-![](.\图片文件\RocketMQ\图片11.png)
+![](./RocketMQ笔记/images/图片11.png)
 
 将jar包上传到服务器上去
 
@@ -275,7 +275,7 @@ nohup java -jar ./rocket-dashboard-1.0.0.jar rocketmq.config.namesrvAddr=127.0.0
 
 运行访问端口是8001，如果从官网拉下来打包的话，默认端口是8080
 
-![](.\图片文件\RocketMQ\图片13.png)
+![](./RocketMQ笔记/images/图片13.png)
 
 
 
@@ -358,7 +358,7 @@ docker run -d --name rmqadmin -e "JAVA_OPTS=-Drocketmq.namesrv.addr=你的外网
 
 ### 8.5	正常启动后的docker ps
 
-![](.\图片文件\RocketMQ\图片14.png)
+![](./RocketMQ笔记/images/图片14.png)
 
 ### 8.6	访问控制台
 
@@ -366,4 +366,4 @@ docker run -d --name rmqadmin -e "JAVA_OPTS=-Drocketmq.namesrv.addr=你的外网
 http://你的服务器外网ip:9999/
 ```
 
-![](.\图片文件\RocketMQ\图片15.png)
+![](./RocketMQ笔记/images/图片15.png)

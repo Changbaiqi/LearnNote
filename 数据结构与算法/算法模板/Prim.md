@@ -5,6 +5,7 @@ author: 长白崎
 categories:
   - "算法"
 tags:
+  - "算法"
   - "Prim"
 ---
 

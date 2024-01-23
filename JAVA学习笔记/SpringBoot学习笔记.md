@@ -3,8 +3,8 @@ title: SpringBoot
 date: 2018-09-07 09:25:00
 author: 长白崎
 categories:
-  - "Java"
-  - "Spring"
+  - ["Java"]
+  - ["Spring"]
 tags:
   - "Java"
   - "SpringBoot"
@@ -252,7 +252,7 @@ SpringBoot是Spring中的一个成员，可以简化Spring，SpringMVC的使用�
 
 SpringBoot项目的结构：
 
-> ![](图片文件\SpringBoot\文件一览表.png)
+> ![文件一览表](./SpringBoot学习笔记/images/文件一览表.png)
 
 ### 2.3 注解使用
 

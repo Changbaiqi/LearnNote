@@ -3,7 +3,8 @@ title: Spring Security框架
 date: 2023-09-07 09:25:00
 author: 长白崎
 categories:
-  - "Spring"
+  - ["Java"]
+  - ["Spring"]
 tags:
   - "Java"
   - "Spring Security"
@@ -50,7 +51,7 @@ Spring Security是基于Spring的安全框架。它提供全面的安全性解�
 
 SpringSecurity的原理其实就是一个过滤链，内部包含了提供各种功能的过滤器。这里我们可以看看入门案例中的过滤器。
 
-### ![](.\图片文件\Security\Snipaste_2023-09-20_01-22-19.png)
+### ![Snipaste_2023-09-20_01-22-19](./SpringSecurity学习/images/Snipaste_2023-09-20_01-22-19.png)
 
 图中只展示了核心过滤器，其他的非核心过滤器并没有在图中展示。
 
@@ -66,7 +67,7 @@ FilterSecurityInterceptor：负责权限的过滤器。
 
 在初次导入框架使用的时候，Security会默认生成一个密码：
 
-![](图片文件\Security\Snipaste_2023-05-14_05-58-02.png)
+![](./SpringSecurity学习/images/Snipaste_2023-05-14_05-58-02.png)
 
 这个密码在默认访问任意接口的时候都需要你进行登录操作，登录时账号就为：user，密码就是上面生成的随机密码。
 
@@ -135,9 +136,9 @@ public class SecurityStudyApplication {
 >
 > 
 
-![](图片文件\Security\Snipaste_2023-05-14_06-37-15.png)
+![](./SpringSecurity学习/images/Snipaste_2023-05-14_06-37-15.png)
 
-![](图片文件\Security\Snipaste_2023-05-14_06-42-48.png)
+![](./SpringSecurity学习/images/Snipaste_2023-05-14_06-42-48.png)
 
 如果使用了新版Security那么：
 
@@ -765,7 +766,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 ### 通过实现UserDetails接口来定义用户
 
-![](图片文件\Security\实现UserDetails接口.png)
+![](./SpringSecurity学习/images/实现UserDetails接口.png)
 
 ```java
 
@@ -1305,7 +1306,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 文件目录展示：
 
-![](.\图片文件\Security\Snipaste_2023-09-20_14-55-35.png)
+![](./SpringSecurity学习/images/Snipaste_2023-09-20_14-55-35.png)
 
 ### 配置SpringSecurity：
 

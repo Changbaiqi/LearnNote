@@ -49,21 +49,21 @@ GraalVM是一款高性能的虚拟机，它能够直接将Java程序编译成本
 
 这里用到的是Java 17版本：
 
-![](图片文件\native-image\Snipaste_2023-11-03_21-14-01.png)
+![Snipaste_2023-11-03_21-14-01](./Native-Image技术与使用/images/Snipaste_2023-11-03_21-14-01.png)
 
 
 
 下载完成之后，放入你本地的JDK目录，例如：
 
-![](图片文件\native-image\Snipaste_2023-11-04_19-28-17.png)
+![Snipaste_2023-11-04_19-28-17](./Native-Image技术与使用/images/Snipaste_2023-11-04_19-28-17.png)
 
 接着配置变量环境：
 
-![](图片文件\native-image\Snipaste_2023-11-04_19-28-47.png)
+![Snipaste_2023-11-04_19-28-47](./Native-Image技术与使用/images/Snipaste_2023-11-04_19-28-47.png)
 
 通过cmd测试一下看看是否配置环境成功：
 
-![](图片文件\native-image\Snipaste_2023-11-04_19-29-28.png)
+![Snipaste_2023-11-04_19-29-28](./Native-Image技术与使用/images/Snipaste_2023-11-04_19-29-28.png)
 
 
 
@@ -93,7 +93,7 @@ GraalVM是一款高性能的虚拟机，它能够直接将Java程序编译成本
 > D:\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.34.31933\bin\Hostx64\x64
 >  ```
 >
->  ![](图片文件\native-image\Snipaste_2023-11-04_19-35-41.png)
+>  ![Snipaste_2023-11-04_19-35-41](./Native-Image技术与使用/images/Snipaste_2023-11-04_19-35-41.png)
 >
 
 
@@ -129,11 +129,11 @@ GraalVM是一款高性能的虚拟机，它能够直接将Java程序编译成本
 
 配置环境变量。添加INCLUDE：
 
-> ![](图片文件\native-image\Snipaste_2023-11-04_19-51-03.png)
+> ![Snipaste_2023-11-04_19-51-03](./Native-Image技术与使用/images/Snipaste_2023-11-04_19-51-03.png)
 
 添加LIB：
 
-> ![](图片文件\native-image\Snipaste_2023-11-04_19-52-06.png)
+> ![Snipaste_2023-11-04_19-52-06](./Native-Image技术与使用/images/Snipaste_2023-11-04_19-52-06.png)
 
 
 

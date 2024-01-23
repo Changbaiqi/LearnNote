@@ -3,8 +3,8 @@ title: Java大数字运算使用技巧
 date: 2018-09-07 09:25:00
 author: 长白崎
 categories:
-  - "Java"
-  - "算法"
+  - ["Java"]
+  - ["算法"]
 tags:
   - "Java"
   - "算法"

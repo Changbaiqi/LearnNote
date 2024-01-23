@@ -57,7 +57,7 @@ Java定义了一套注解，共有7个，3个在java.lang中，剩下4个在java
 
 ---
 
-![](图片文件\Java的Annotation架构.png)
+![Java的Annotation架构](./Java接口编程及AOP编程/images/Java的Annotation架构.png)
 
 从中，我们可以看出：
 
@@ -75,7 +75,7 @@ Java定义了一套注解，共有7个，3个在java.lang中，剩下4个在java
   >
   > 下面，我先介绍框架图的左半边（如下图），即Annotation，RetentionP，ElementType；然后在就Annotation的实现类进行举例说明。
   >
-  > ![p](图片文件\Annotation的许多实现类.png)
+  > ![Annotation的许多实现类](./Java接口编程及AOP编程/images/Annotation的许多实现类.png)
 
 
 
@@ -209,7 +209,7 @@ public @interface MyAnnotation1 {
 
 理解这一点之后，我们就很容易理解 java 中自带的 Annotation 的实现类，即 Annotation 架构图的右半边。如下图：
 
-![](图片文件\Annotation继承图.png)
+![Annotation继承图](./Java接口编程及AOP编程/images/Annotation继承图.png)
 
 **java 常用的 Annotation：**
 

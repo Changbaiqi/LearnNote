@@ -3,8 +3,8 @@ title: Web项目实战
 date: 2018-09-07 09:25:00
 author: 长白崎
 categories:
-  - "Web"
-  - "软件工程"
+  - ["Web"]
+  - ["软件工程"]
 tags:
   - "软件工程"
 ---

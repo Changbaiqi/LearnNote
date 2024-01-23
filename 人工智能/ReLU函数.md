@@ -1,11 +1,13 @@
 ---
-title: C++复习特性关键点快速总结
+title: ReLU函数
 date: 2018-09-07 09:25:00
 author: 长白崎
 categories:
-  - "C++"
+  - ["AI"]
+  - ["算法"]
+  - ["NN"]
 tags:
-  - "C++"
+  - "ReLU函数"
 ---
 
 

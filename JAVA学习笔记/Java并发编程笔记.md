@@ -3,8 +3,8 @@ title: Java并发编程
 date: 2018-09-07 09:25:00
 author: 长白崎
 categories:
-  - "并发编程"
-  - "Java"
+  - ["并发编程"]
+  - ["Java"]
 tags:
   - "并发编程"
   - "Java"
@@ -75,7 +75,7 @@ public enum State {
 
 ## 2、JUC的结构
 
-![](图片文件\Java并发编程\Snipaste_2023-06-11_21-46-04.png)
+![Snipaste_2023-06-11_21-46-04](./Java并发编程笔记/images/Snipaste_2023-06-11_21-46-04.png)
 
 > 1、tools（工具类）：又叫信号量三组工具类，包含有：
 >
@@ -176,7 +176,7 @@ Lock接口
 >
 > 实现类
 >
-> ![](图片文件\Java并发编程\Snipaste_2023-06-12_02-01-04.png)
+> ![Snipaste_2023-06-12_02-01-04](./Java并发编程笔记/images/Snipaste_2023-06-12_02-01-04.png)
 >
 > reentrantLock构造器
 >
@@ -274,7 +274,7 @@ public class Father {
 
 执行结果：
 
-![](图片文件\Java并发编程\Snipaste_2023-06-12_02-48-48.png)
+![Snipaste_2023-06-12_02-48-48](./Java并发编程笔记/images/Snipaste_2023-06-12_02-48-48.png)
 
 从上述代码示例可以看到调用的三个方法均得到了执行。当synchronized修饰普通方法时，使用的是对象锁，也就是Son对象。三个方法的锁都是Son对象。我们在子类中执行sonDoSomeSthing方法时，获取了Son对象锁，然后在sonDoSomeSthing时调用了重写父类的fatherDoSomeSthing方法，该方法的锁也是Son对象锁，然后在其中调用父类的fatherDoSomeSthing方法，该方法的锁也是Son对象锁。一个锁多次请求均调用成功，可见synchronized是可重入锁。
 

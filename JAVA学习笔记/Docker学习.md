@@ -59,7 +59,7 @@ tags:
 
 如下图所示：
 
-![](图片文件\Docker\虚拟化技术1.png)
+![虚拟化技术1](./Docker学习/images/虚拟化技术1.png)
 
 通过Hypervisor层，我们可以创建不同的虚拟机，并且每个虚拟机都是分离、独立的，这样一来，我们就可以在一台硬件服务器和本地操作系统之上虚拟化出多个服务器，用来部署我们的应用；
 
@@ -101,7 +101,7 @@ tags:
 
 然而这个基于LXC（Linux Container）技术的核心管理引擎开源后，让全世界的技术人员感到惊艳，感叹这一切太方便了......。也正是dotCloud的创始人这个艰难的孤注一掷的决定让所有的IT巨头们也为之一颤。
 
-![](图片文件\Docker\Docker之父.png)
+![Docker之父](./Docker学习/images/Docker之父.png)
 
 Docker创始人Solomon Hykes（Docker之父）
 
@@ -149,7 +149,7 @@ https://github.com/docker/docker-ce
 
 下图比较了Docker和传统虚拟化方式的不同之处：
 
-![](图片文件\Docker\容器与虚拟机比较.png)
+![容器与虚拟机比较](./Docker学习/images/容器与虚拟机比较.png)
 
 可见容器时在本地操作系统层面上实现虚拟化，直接复用本地主机的操作系统，不需要单独安装操作系统，而传统的虚拟化技术方式则需要单独安装每个虚拟机的操作系统。
 
@@ -287,7 +287,7 @@ Docker的底层运行原理：
 
 Docker服务启动->下载镜像->启动该镜像得到一个容器->容器里面运行着我们想要的程序；
 
-![](图片文件\Docker\Docker技术运行机制.png)
+![Docker技术运行机制](./Docker学习/images/Docker技术运行机制.png)
 
 
 
@@ -329,7 +329,7 @@ docker run -d -p 8080:8080 tomcat
 
 显示本地已有的镜像：docker images
 
-![](图片文件\Docker\images指令.png)
+![images指令](./Docker学习/images/images指令.png)
 
 在列出信息中，可以看到几个字段信息
 
@@ -383,7 +383,7 @@ t表示虚拟控制台，分配到一个虚拟控制台；
 
 Docker使用客户端-服务器（C/S）架构模式，使用远程 API 来管理和创建Docker容器。
 
-![](图片文件\Docker\Docker技术运行机制.png)
+![Docker技术运行机制](./Docker学习/images/Docker技术运行机制-1706019009353-6.png)
 
 Docker容器通过Docker镜像来创建。
 
@@ -430,7 +430,7 @@ Docker提供了一个非常简单的机制来创建镜像或者更新现有的�
 
 镜像是由许多层的文件系统叠加构成的，最下面是一个引导文件系统bootfs，第二层是一个root文件系统rootfs，root文件系统通常是某种操作系统，比如centos、Ubuntu，在root文件系统之上又有很多层文件系统，这些文件系统叠加在一起，构成docker中的镜像；
 
-![](图片文件\Docker\docker文件系统.png)
+![docker文件系统](./Docker学习/images/docker文件系统.png)
 
 
 
@@ -474,7 +474,7 @@ redis是查询到的镜像名称，latest是镜像的标签tag
 
 Docker利用容器来运行引用，镜像是只读的 ，容器在启动的时候创建一层可写层作为最上层。  
 
-![](图片文件\Docker\docker文件系统.png)
+![docker文件系统](./Docker学习/images/docker文件系统-1706019028812-9.png)
 
 
 

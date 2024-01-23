@@ -64,7 +64,7 @@ tags:
 
 ## 6.MyBatis框架结构
 
-> ![](图片文件\MyBatis\MyBatis框架结构.png)
+> ![MyBatis框架结构](./MyBatis学习/images/MyBatis框架结构.png)
 
 ## 7.添加框架的步骤
 
@@ -100,29 +100,29 @@ tags:
 
 ### 核心文件配置：
 
-> ![](图片文件\MyBatis\核心配置文件_1.png)
+> ![](./MyBatis学习/images/核心配置文件_1.png)
 >
-> ![](图片文件\MyBatis\核心配置文件_2.png)
+> ![](./MyBatis学习/images/核心配置文件_2.png)
 >
 > default所对应值表示所引用的是哪个数据库配置
 >
-> ![](图片文件\MyBatis\核心配置文件_3.png)
+> ![](./MyBatis学习/images/核心配置文件_3.png)
 >
 > 其中<transactionManager>为配置事务管理器
 
 ### SQL操作
 
-> ![](图片文件\MyBatis\SQL操作_1.png)
+> ![](./MyBatis学习/images/SQL操作_1.png)
 >
 > SQL操作时在另外一个xml文件单独写的
 
 ### 查询Java代码实例：
 
-> ![](图片文件\MyBatis\查询Java实例_1.png)
+> ![](./MyBatis学习/images/查询Java实例_1.png)
 
 ### Java对应MyBatis的类型别名：
 
-> ![](图片文件\MyBatis\Java类型对应映射MyBatis的别名.png)
+> ![](./MyBatis学习/images/Java类型对应映射MyBatis的别名.png)
 
 
 
@@ -374,4 +374,4 @@ public void updateNotNull(){
 
 > 说明：Mapper的Java接口不是必须的，也可以不写Mapper对应的Java接口直接使用Mapper的xml，这里要注意的是单纯的使用MyBatis，Mapper的xml中的namespace和对应的sql的id都代表的是唯一id的意思没有其他关联的用途，除非设定绑定
 
-![](图片文件\MyBatis\MyBatis不是用映射Mapper.png)
+![](./MyBatis学习/images/MyBatis不是用映射Mapper.png)

@@ -24,6 +24,6 @@ tags:
 >             as = AudioSystem.getAudioInputStream(myStream);
 > ```
 >
-> ![](图片文件\Java踩坑学习\读取resource.png)
+> ![读取resource](./Java学习踩坑笔记/images/读取resource.png)
 >
 > 这里提供了一个获取resource文件流的例子，亲测有效！！！。

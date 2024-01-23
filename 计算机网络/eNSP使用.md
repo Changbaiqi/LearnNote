@@ -3,14 +3,13 @@ title: eNSP使用
 author: 长白崎
 date: 2022-9-28 11:45:14
 cover: "https://ts1.cn.mm.bing.net/th/id/R-C.63f363ac58c7a2ab1b0dd772fb10c0af?rik=2KkL%2f5xzD3yihA&riu=http%3a%2f%2fimage.zzd.sm.cn%2f9616253699793162824.jpg%3fid%3d0&ehk=S7t%2fWpNOqZMLEdmU7BZVsOjYMnBPanTPaxoUBKpIgaE%3d&risl=&pid=ImgRaw&r=0"
+categories:
+  - ["计网"]
+  - ["组网实习"]
+  - ["eNSP"]
 tags:
   - "计网"
   - "组网实习"
-  - "eNSP"
-categories:
-  - "计网"
-  - "组网实习"
-  - "eNSP"
 sticky: false
 ---
 
