@@ -1,6 +1,6 @@
 ---
 title: UML类图
-date: 2018-09-07 09:25:00
+date: 2024-01-02 21:17:30
 author: 长白崎
 categories:
   - "软件工程"

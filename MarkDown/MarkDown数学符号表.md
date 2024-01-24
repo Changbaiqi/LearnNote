@@ -1,6 +1,6 @@
 ---
 title: MarkDown数学符号收集表
-date: 2018-09-07 09:25:00
+date: 2023-09-18 18:33:00
 author: 长白崎
 categories:
   - "MarkDown"

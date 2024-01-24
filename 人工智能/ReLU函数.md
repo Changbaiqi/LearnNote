@@ -1,6 +1,6 @@
 ---
 title: ReLU函数
-date: 2018-09-07 09:25:00
+date: 2023-12-11 00:00:36
 author: 长白崎
 categories:
   - ["AI"]

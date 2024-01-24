@@ -1,6 +1,6 @@
 ---
 title: Ajax学习
-date: 2022-09-07 09:25:00
+date: 2023-02-24 09:46:09
 author: 长白崎
 categories:
   - "前端"

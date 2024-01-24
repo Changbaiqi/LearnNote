@@ -1,6 +1,6 @@
 ---
 title: BP神经网络算法
-date: 2024-09-07 09:25:00
+date: 2023-02-24 14:37:39
 author: 长白崎
 categories:
   - ["AI"]

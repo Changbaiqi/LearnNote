@@ -1,7 +1,7 @@
 ---
 title: eNSP使用
+date: 2023-12-04 11:07:35
 author: 长白崎
-date: 2022-9-28 11:45:14
 cover: "https://ts1.cn.mm.bing.net/th/id/R-C.63f363ac58c7a2ab1b0dd772fb10c0af?rik=2KkL%2f5xzD3yihA&riu=http%3a%2f%2fimage.zzd.sm.cn%2f9616253699793162824.jpg%3fid%3d0&ehk=S7t%2fWpNOqZMLEdmU7BZVsOjYMnBPanTPaxoUBKpIgaE%3d&risl=&pid=ImgRaw&r=0"
 categories:
   - ["计网"]
@@ -44,7 +44,7 @@ sticky: false
 
 在这种情况下出现了VLAN技术。这种技术可以把一个LAN划分成多个逻辑的VLAN，每个VLAN是一个广播域，VLAN内的主机间通信就和在一个LAN内一样，而VLAN间则不能直接互通，广播报文就被限制在一个VLAN内。如下图所示。
 
-![](images/novlan.png)
+![](./eNSP使用/images/novlan.png)
 
 
 
@@ -75,13 +75,13 @@ sysname R1
 
 接口视图功能：使用ip address 命令配置接口IP地址、子网掩码
 
-![](images/fc4f98bbf716444295e9f157252ec983.png)
+![](./eNSP使用/images/fc4f98bbf716444295e9f157252ec983.png)
 
 1.clock datetime命令：设置当前时间和日期（用户视图）
 2.clock timezone命令：设置所在时区（命令视图）
 【注意：一般先配置时区，再配置时间和日期】
 
-![](images/f743e767a8014b61acc8ba78175ede5c.png)
+![](./eNSP使用/images/f743e767a8014b61acc8ba78175ede5c.png)
 
 关闭烦人的提示信息：
 
