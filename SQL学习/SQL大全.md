@@ -28,3 +28,22 @@ show variables like 'log_error';
 show variables like 'slow_query_log_file';
 ```
 
+
+
+修改数据库密码：
+
+```sql
+set password for 'root'@'%' = password('123456');
+```
+
+> 这里指的是更新用户名称为root其访问范围为%的账号密码为123456，注意%代表的是无任何访问限制的账户也就是说可以从公网访问，如果%替换为localhost，那么意思就是只能数据库所在机子才能访问。
+
+
+
+删除数据库：
+
+```sql
+DROP USER 'root'@'localhost';
+```
+
+> 这里演示的是删除root账户

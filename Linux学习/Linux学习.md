@@ -1,5 +1,5 @@
 ---
-title: Linux学习
+title: Linux学习(CentOS)
 date: 2023-02-24 09:46:09
 author: 长白崎
 categories:
@@ -165,3 +165,93 @@ tags:
 ### 查看当前在后台执行的命令，可查看命令进程号码
 
 > jobs
+
+### 压缩命令
+
+> ```sh
+> tar -zcvf 压缩文件名称 .tar.gz 被压缩文件名
+> ```
+
+### 解压缩命令
+
+> ```sh
+> tar -zxvf 压缩文件名.tar.gz
+> ```
+
+### 查看防火墙状态
+
+> ```shell
+> systemctl status firewalld.service
+> ```
+>
+> 运行上述命令后，如果看到有绿色字样标注的“active（running）”，说明防火墙是开启状态。
+
+### 开启防火墙
+
+> ```shell
+> systemctl start firewalld.service
+> ```
+
+### 关闭防火墙
+
+> ```shell
+> systemctl stop firewalld.service
+> ```
+>
+> 关闭后，可查看防火墙状态，当显示disavtive（dead）的字样，说明CentOS 7防火墙已经关闭。
+> 但要注意的是，上面的命令只是临时关闭了CentOS 7防火墙，当重启操作系统后，防火墙服务还是会再次启动。如果想要永久关闭防火墙则还需要禁用防火墙服务。
+
+### 禁用防火墙服务
+
+> ```shell
+> systemctl disable firewalld.service
+> ```
+
+### 查看防火墙规则
+
+> ```shell
+> firewall-cmd –list-all
+> ```
+
+### 查询端口是否开放
+
+> ```shell
+> firewall-cmd –query-port=8080/tcp
+> ```
+>
+> 这里的8080指的就是需要查看的指定端口
+
+### 重启防火墙
+
+> ```shell
+> firewall-cmd –reload
+> ```
+
+### 开放指定端口
+
+> ```shell
+> firewall-cmd –permanent –add-port=8080/tcp
+> ```
+>
+> 以上例子为开放端口8080
+>
+> (修改配置后需要重启防火墙)
+>
+> 参数解释：
+> firewall-cmd: 是Linux提供的操作firewall的一个工具；
+> –permanent：表示设置为持久；
+> –add-port：表示添加的端口。
+
+### 移除某个防火墙开启的端口
+
+> ```shell
+> firewall-cmd –permanent –remove-port=8080/tcp
+> ```
+>
+> (修改配置后需要重启防火墙)
+
+### 查看防火墙帮助
+
+> ```shell
+> firewall-cmd --help
+> ```
