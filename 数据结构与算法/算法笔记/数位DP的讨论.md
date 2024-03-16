@@ -3,7 +3,7 @@ title: 数位DP题目的讨论
 date: 2023-06-09 01:56:43
 author: 长白崎
 categories:
-  - "算法"
+  - "数据结构与算法"
 tags:
   - "DP"
 ---

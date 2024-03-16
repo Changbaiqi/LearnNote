@@ -169,7 +169,19 @@ tags:
 ### 压缩命令
 
 > ```sh
-> tar -zcvf 压缩文件名称 .tar.gz 被压缩文件名
+> tar -zcvf 压缩文件名称 .tar.gz #被压缩文件名
+> ```
+>
+> ```shell
+> zip -r mydata.zip mydata #压缩mydata目录
+> ```
+>
+> 注意unzip指令cnetos不自带需要先安装unzip才行
+>
+> unzip安装：
+>
+> ```shell
+> yum install zip unzip
 > ```
 
 ### 解压缩命令
@@ -177,6 +189,20 @@ tags:
 > ```sh
 > tar -zxvf 压缩文件名.tar.gz
 > ```
+>
+> ```shell
+> unzip 文件夹名称.zip
+> ```
+>
+> 注意unzip指令cnetos不自带需要先安装unzip才行
+>
+> unzip安装：
+>
+> ```shell
+> yum install zip unzip
+> ```
+>
+> 
 
 ### 查看防火墙状态
 
@@ -212,6 +238,14 @@ tags:
 > ```shell
 > firewall-cmd –list-all
 > ```
+
+### 查看开放端口
+
+> ```shell
+> firewall-cmd --list-ports
+> ```
+>
+> 
 
 ### 查询端口是否开放
 
@@ -254,4 +288,27 @@ tags:
 
 > ```shell
 > firewall-cmd --help
+> ```
+
+### 查看 root 用户登录成功的IP及次数
+
+> ```shell
+> grep "Accepted password for root" /var/log/secure | awk '{print $11}' | sort | uniq -c | sort -nr | more
+> 
+> ```
+>
+> 看看是否有不熟悉的IP地址
+
+### 查看尝试暴力破解 root 账户的IP及次数
+
+> ```shell
+>  grep "Failed password for root" /var/log/secure | awk '{print $11}' | sort | uniq -c | sort -nr | more
+> 
+> ```
+
+### 查看尝试暴力破解用户名的IP及次数
+
+> ```shell
+> grep "Failed password for invalid user" /var/log/secure | awk '{print $13}' | sort | uniq -c | sort -nr | more
+> 
 > ```

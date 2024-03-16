@@ -3,7 +3,7 @@ title: 树形DP的讨论
 date: 2023-05-19 01:54:58
 author: 长白崎
 categories:
-  - "算法"
+  - "数据结构与算法"
 tags:
   - "DP"
 ---
