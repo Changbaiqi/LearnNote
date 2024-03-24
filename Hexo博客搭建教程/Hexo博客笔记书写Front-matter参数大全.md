@@ -20,11 +20,12 @@ tags:
 ---
 title: typora-vue-theme主题介绍
 date: 2018-09-07 09:25:00
-author: 赵奇
+author: 长白崎
 img: /source/images/xxx.jpg
 top: true
 hide: false
 cover: true
+published: false
 coverImg: /images/1.jpg
 password: 8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92
 toc: false
@@ -37,9 +38,15 @@ tags:
 ---
 ```
 
+## 参数说明
 
-
-
+* title 文章标题
+* date 文章发布时间
+* author 文章作者
+* img 标题图片
+* top 是否置顶true为置顶
+* hide 是否隐藏文章true为隐藏
+* published 是否公开文章false为不公开
 
 ## Quick Start
 
