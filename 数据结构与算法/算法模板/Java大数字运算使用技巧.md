@@ -4,7 +4,7 @@ date: 2023-05-19 01:54:48
 author: 长白崎
 categories:
   - ["Java"]
-  - ["算法"]
+  - ["数据结构与算法"]
 tags:
   - "Java"
   - "算法"

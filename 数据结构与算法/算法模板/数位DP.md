@@ -3,7 +3,7 @@ title: 数位DP模板
 date: 2023-05-22 15:42:32
 author: 长白崎
 categories:
-  - "算法"
+  - "数据结构与算法"
 tags:
   - "DP"
 ---
