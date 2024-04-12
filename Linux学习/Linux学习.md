@@ -312,3 +312,21 @@ tags:
 > grep "Failed password for invalid user" /var/log/secure | awk '{print $13}' | sort | uniq -c | sort -nr | more
 > 
 > ```
+
+
+
+### 图像转边命令行
+
+> ```shell
+> systemctl set-default multi-user.target
+> ```
+>
+> 输入之后再输入reboot重启即可。
+
+### 命令行转变图形
+
+> ```shell
+> systemctl set-default graphical.target
+> ```
+>
+> 输入之后再输入reboot重启即可。
