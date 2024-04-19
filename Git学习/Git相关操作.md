@@ -252,6 +252,34 @@ git merge dev
 >
 > 
 
+### 修改分支名称（重命名分支名称）
+
+```sh
+git branch -m oldName newName
+```
+
+
+
+
+
+### 删除分支
+
+1、删除本地分支
+
+```sh
+git branch -d <localBranchName> #localBranchName就是本地分支的名称
+```
+
+
+
+2、删除远程分支
+
+```sh
+git push -u origin -d <branchName>  #<branchName>就是分支的名称
+```
+
+> 其中==-d==是==-delete==的缩写
+
 
 
 ## 如果遇到大文件想要删除，或者想删除所有commit中的指定文件
