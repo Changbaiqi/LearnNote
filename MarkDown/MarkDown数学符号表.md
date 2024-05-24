@@ -33,13 +33,13 @@ tags:
 |$\omega$|\omega|$\Omega$|\Omega|
 |$\nu$|\nu|$\Nu$|\Nu|
 |$\pi$|\pi|$\Pi$|\Pi|
-|$\tau$||||
-|$\zeta$||||
-|$\kappa$||||
-|$\psi$||||
-|$\rho$||||
-|$\varrho$||||
-|$\xi$||||
+|$\tau$|\tau|||
+|$\zeta$|\zeta|||
+|$\kappa$|\kappa|||
+|$\psi$|$\psi|||
+|$\rho$|$\rho|||
+|$\varrho$|\varrho|||
+|$\xi$|\xi|||
 |$\partial$|\partial|||
 |$\phi$|\phi|$\Phi$|\Phi|
 
@@ -49,7 +49,7 @@ tags:
 | ----------------------- | -------------------------------- | ------------------------------- |
 | 求和公式                | $\sum$                           | \sum                            |
 | 求和上下标              | $\sum_{i=0}^n$                   | \sum_{i=0}^n                    |
-| 叉乘/点乘	× \times   | $\times \cdot$                   | \times \cdot                    |
+| 叉乘/点乘 × \times      | $\times \cdot$                   | \times \cdot                    |
 | 正负号                  | $\pm$                            | \pm                             |
 | 除号                    | $\div$                           | \div                            |
 | 竖线                    | $\mid$                           | \mid                            |
@@ -65,7 +65,7 @@ tags:
 | 不等于                  | $\neq$                           | \neq                            |
 | 等价于                  | $\sim$                           | \sim                            |
 | 约等于                  | $\approx$                        | \approx                         |
-| N元乘积	∏ \prod      | $\prod$                          | \prod                           |
+| N元乘积 ∏ \prod         | $\prod$                          | \prod                           |
 | N元余积                 | $\coprod$                        | \coprod                         |
 | 省略号                  | $\cdots$                         | \cdots                          |
 | 积分                    | $\int$                           | \int                            |

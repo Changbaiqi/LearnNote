@@ -21,6 +21,7 @@ tags:
 > 视屏教学：
 >
 > [数位DP](https://www.bilibili.com/video/BV1Fc411h76q)
+> [E37 数位DP Windy数_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1fa4y1H7J6/?spm_id_from=333.337.search-card.all.click&vd_source=fbdc4dced00d004504f57fb2f6de726b)
 >
 > 这里说一下，前导零的意思，就是这个数字的前面都是零，比如说我们要dp的数字的最数字的位数为123。但是我们在进行dfs的DP的时候会从1开始，那么一开始我们从1开始dfs的时候那么就是001。也就是前面占位的都是零，也就叫做前导零。
 
