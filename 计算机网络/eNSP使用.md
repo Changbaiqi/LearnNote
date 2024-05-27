@@ -353,3 +353,43 @@ user privilege level 3 //设置用户权限等级为3，登录权限范围为0-1
 > ```
 > nat address-group 1 64.1.1.4 64.1.1.4       //这个意思使用64.1.1.4到64.1.1.4这个区间的地址去访问
 > ```
+
+
+
+
+
+不同Vlan之间通讯
+
+```
+//交换机可以子接口划分，直接进入子接口0.10，建议与vlan一致
+[R1]int g0/0/0.10
+//配置vlan封装结构，（dot1q为IEEE802.1q协议，该子接口属于vlan10）
+[R1-GigabitEthernet0/0/0.10]dot1q termination vid 10
+//为该子接口添加ip地址（即vlan10下面所属主机的网关地址）
+[R1-GigabitEthernet0/0/0.10]ip address 192.168.10.1 24
+//开启向下arp广播请求功能
+[R1-GigabitEthernet0/0/0.10]arp broadcast enable 
+//进入子接口0.10，建议与对应的vlan一致
+[R1-GigabitEthernet0/0/0.10]int g0/0/0.20
+//配置vlan封装结构，同上
+[R1-GigabitEthernet0/0/0.20]dot1q termination vid 20
+//为该子接口添加ip地址，同上
+[R1-GigabitEthernet0/0/0.20]ip address 192.168.20.1 24
+//开启广播请求功能，同上
+[R1-GigabitEthernet0/0/0.20]arp broadcast enable 
+```
+
+
+
+终结vlan
+
+```
+dot1q termination vid 10                    //配置子接口的终结VLAN ID
+```
+
+开启子接口的ARP广播功能
+
+```
+arp broadcast enable
+```
+
