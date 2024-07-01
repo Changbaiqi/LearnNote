@@ -330,3 +330,35 @@ tags:
 > ```
 >
 > 输入之后再输入reboot重启即可。
+
+
+
+### 添加环境变量
+
+1、打开终端，使用root用户或者具有sudo权限的用户登录到系统中。
+
+2、编辑/etc/profile文件，例如使用vim编辑器：
+
+```shell
+sudo vim /etc/profile
+```
+
+3、在文件末尾添加你需要设置的环境变量，例如添加JAVA_HOME环境变量：
+
+```shell
+export JAVA_HOME=/usr/local/jdk1.8.0_281
+export PATH=$JAVA_HOME/bin:$PATH
+```
+
+4、保存并退出文件，然后配置生效：
+
+```shell
+source /etc/profile
+```
+
+5、验证环境变量是否设置成功：
+
+```shell
+echo $JAVA_HOME
+```
+

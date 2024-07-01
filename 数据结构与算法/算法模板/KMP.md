@@ -72,7 +72,7 @@ tags:
 > 		
 > 		int j=0;
 > 		for(int i=0 ; i<s.length ; ++i) {
-> 			while(j>0 && s[i]!=pat[j]) j = next[j-1];
+> 			while(j>0 && s[i]!=pat[j]) j =  next[j-1];
 > 			if(s[i]==pat[j]) ++j;
 > 			if(j==pat.length) return i-pat.length+1;
 > 		}
