@@ -356,9 +356,28 @@ export PATH=$JAVA_HOME/bin:$PATH
 source /etc/profile
 ```
 
+```shell
+source /etc/environment #使配置立即生效。
+```
+
 5、验证环境变量是否设置成功：
 
 ```shell
 echo $JAVA_HOME
 ```
 
+
+
+
+
+## vim操作
+
+---
+
+全部删除：按esc键后，先按gg（到达顶部），然后dG
+全部复制：按esc键后，先按gg，然后ggyG
+全选高亮显示：按esc键后，先按gg，然后ggvG或者ggVG
+
+单行复制：按esc键后, 然后yy
+单行删除：按esc键后, 然后dd
+粘贴：按esc键后, 然后p

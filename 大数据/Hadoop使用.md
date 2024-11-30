@@ -545,3 +545,5 @@ HDFS集群
   如果使用主机名访问，别忘了在Windows配置hosts
 
   ![image-20240701123054911](./Hadoop使用/images/image-20240701123054911.png)
+  
+  

@@ -282,6 +282,53 @@ git push -u origin -d <branchName>  #<branchName>就是分支的名称
 
 
 
+### Git 拉取远程分支代码并合并到本地分支步骤
+
+```shell
+git remote -v #查看远程
+#获取远程指定分支到本地临时新建的分支
+#获取远程master的分支的代码到临时新建的temp
+git fetch origin master:temp
+#查看版本差异
+#查看temp分支与当前分支的差异
+git diff temp
+#将临时分支temp合并到当前分支
+git merge temp
+#删除本地临时分支
+git branch -d temp
+```
+
+#### 不在本地新建分支版本：
+
+```shell
+#查看远程
+git remote -v
+#获取远程分支到本地
+#获取远程的master分支
+git fetch origin master
+#查看版本差异
+#查看远程master分支与本地master分支的差别
+git log -p master..origin/master
+#合并到本地分支
+git merge origin/master
+```
+
+#### 他奶奶的直接拉取合并（不推荐用，万一出岔子自己负责）
+
+```shell
+#查看远程分支
+git remtoe -v
+#拉取合并到本地分支,因为pull实际上就是fetch和merge的结合体
+#拉取远程master分支合并到当前分支
+git pull origin master
+```
+
+
+
+
+
+
+
 ## 如果遇到大文件想要删除，或者想删除所有commit中的指定文件
 
 [Git无法上传删除 Commit里面有大文件_git 删除commit的大文件-CSDN博客](https://blog.csdn.net/LoveFHM/article/details/131563696)
