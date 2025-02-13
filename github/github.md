@@ -3,9 +3,9 @@ title: 玩转Github
 date: 2024-06-08 17:42:35
 author: 长白崎
 categories:
-  - ["数据库","SQL"]
+  - ["Github"]
 tags:
-  - "SQL"
+  - "Github"
 ---
 
 

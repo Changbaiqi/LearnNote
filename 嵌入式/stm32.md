@@ -1,4 +1,14 @@
-# stm32 学习
+---
+title: STM32学习
+date: 2023-03-22 17:42:35
+author: 长白崎
+categories:
+  - ["嵌入式","STM32"]
+tags:
+  - "STM32"
+---
+
+# STM32 学习
 
 ---
 

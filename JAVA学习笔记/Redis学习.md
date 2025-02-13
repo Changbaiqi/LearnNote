@@ -18,6 +18,28 @@ tags:
 
 ---
 
+下载Redis包
+
+```shell
+wget https://download.redis.io/releases/redis-7.2.0.tar.gz
+```
+
+
+
+解压文件
+
+```shell
+ tar -zxvf redis-7.2.0.tar.gz
+```
+
+进入redis安装目录
+
+```shell
+cd redis-7.2.0
+```
+
+
+
 1.Redis是开源的数据库，首先如果要运行话先要用gcc编译器编译好之后才能运行。
 
 如果没有gcc编译器的可以使用yum指令
@@ -54,6 +76,55 @@ redis-cli -h [IP地址] -p [端口号] shutdown #和上面的意思差不多，�
 redis-cli  #使用redis自带的客户端连接redis
 redis-cli -h [IP地址] -p [端口号]
 ```
+
+
+
+## 将Redis设置成开启自启
+
+---
+
+1.新建文件
+
+```shell
+vi /etc/systemd/system/redis.service
+```
+
+2.进入之后将以下信息复制进去：（注意ExecStart的内容为你们自己的redis.conf文件的路径）
+
+```shell
+[Unit]
+Description=redis-server
+After=network.target
+
+[Service]
+#Type=forking
+ExecStart=/usr/local/bin/redis-server /usr/local/redis-7.2.0/redis.conf
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
+```
+
+之后便保存退出。
+
+1. 退出之后要让文件生效
+
+   ```shell
+   systemctl daemon-reload
+   systemctl enable redis
+   ```
+
+2. 然后重启redis
+
+   ```shell
+   systemctl start redis
+   ```
+
+3. 查看redis状态
+
+   ```shell
+   systemctl status redis
+   ```
 
 
 

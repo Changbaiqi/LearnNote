@@ -368,6 +368,14 @@ echo $JAVA_HOME
 
 
 
+### 修改文件名称
+
+```shell
+mv a.txt a1.txt
+```
+
+
+
 
 
 ## vim操作
