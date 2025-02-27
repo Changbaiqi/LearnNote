@@ -47,6 +47,15 @@ npm run dev
 
 
 
+### 3.设置npm代理本地clash
+
+```shell
+npm config set proxy http://proxy.example.com:8080
+npm config set https-proxy http://proxy.example.com:8080
+```
+
+
+
 
 
 setup函数的两种返回值：
