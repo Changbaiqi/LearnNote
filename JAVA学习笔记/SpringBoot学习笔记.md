@@ -3,8 +3,7 @@ title: SpringBoot
 date: 2023-02-24 09:46:09
 author: 长白崎
 categories:
-  - ["Java"]
-  - ["Spring"]
+  - ["Java", "Spring"]
 tags:
   - "Java"
   - "SpringBoot"

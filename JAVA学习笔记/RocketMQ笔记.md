@@ -3,8 +3,7 @@ title: RocketMQ学习
 date: 2023-09-20 21:20:09
 author: 长白崎
 categories:
-  - ["Java"]
-  - ["消息队列"]
+  - ["Java","消息队列"]
 tags:
   - "Java"
   - "RocketMQ"

@@ -1112,11 +1112,11 @@ NacosServer相对于EurekaServer，只不过EurekaServer使我们自己搭建的
 
 ![](./SpringCloud学习笔记/images/Nacos配置文件1.png)
 
-![Nacos数据库配置](F:\JAVA学习笔记\./SpringCloud学习笔记/images/Nacos数据库配置.png)
+![Nacos数据库配置](./SpringCloud学习笔记/images/Nacos数据库配置.png)
 
 Nacos默认为集群配置，如果是想设置成单个若没有改启动模式为单个那么会报错，修改的地方直接在start文件里面改就行：
 
-![](F:\JAVA学习笔记\./SpringCloud学习笔记/images/Nacos启动模式设定.png)
+![](./SpringCloud学习笔记/images/Nacos启动模式设定.png)
 
 #### Java编写配置：
 
