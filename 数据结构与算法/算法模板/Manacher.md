@@ -57,7 +57,7 @@ tags:
 > 		for(int i=0;i<str.length;++i) {s[++m]=str[i]; s[++m]='#';};
 > 		
 > 		int p[] = new int[s.length]; //用于寄存p[i]点的回文串长度
-> 		
+> 				//M为最右回文中间值
 > 		//M最长回文中间值,R为右边界，max长回文子串
 > 		int M = 0,R=0,max=0;
 > 		for(int i =1;i<=m;++i) {

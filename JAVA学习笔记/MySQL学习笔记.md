@@ -22,7 +22,7 @@ tags:
 
 
 
-## 安装Mysql(CentOS7)
+## 安装Mysql8(CentOS7)
 
 ### **一、添加MySQL Yum仓库**
 
@@ -75,6 +75,12 @@ tags:
    ```shell
    sudo systemctl enable mysqld
    ```
+   
+4. **获取初次启动密码**
+
+```shell
+grep 'A temporary password' /var/log/mysqld.log
+```
 
 ### **三、登录MySQL**
 
@@ -87,6 +93,103 @@ mysql -u root -p
 
 ```sql
 alter user 'root'@'localhost' IDENTIFIED BY '修改的密码';
+```
+
+
+
+------
+
+### **五、配置远程访问（可选）**
+
+1. **登录MySQL后执行**
+
+   ```sql
+   CREATE USER '用户名'@'%' IDENTIFIED BY '强密码';
+   GRANT ALL PRIVILEGES ON *.* TO '用户名'@'%' WITH GRANT OPTION;
+   FLUSH PRIVILEGES;
+   ```
+
+
+
+## 安装Mysql5(CentOS7)
+
+
+
+### **一、添加MySQL Yum仓库**
+
+1. **下载MySQL RPM包**
+
+   ```shell
+   sudo wget wget https://dev.mysql.com/get/mysql57-community-release-el7-8.noarch.rpm
+   ```
+
+2. **安装MySQL仓库**
+
+   ```shell
+   sudo rpm -ivh mysql57-community-release-el7-8.noarch.rpm
+   ```
+
+3. **验证仓库是否添加成功**
+
+   ```shell
+   yum repolist enabled | grep "mysql.*-community.*"
+   ```
+
+------
+
+### **二、安装MySQL 5**
+
+1. **更新系统并安装MySQL**
+
+   ```shell
+   sudo yum update
+   sudo yum -y install mysql-server --nogpgcheck
+   ```
+
+   或
+
+   ```shell
+   sudo yum update
+   sudo yum -y install mysql-community-server --nogpgcheck
+   ```
+
+   
+
+2. **启动MySQL服务**
+
+   ```shell
+   sudo systemctl start mysqld
+   ```
+
+3. **设置开机自启**
+
+   ```shell
+   sudo systemctl enable mysqld
+   ```
+
+4. **获取初次启动密码**
+
+```shell
+grep 'A temporary password' /var/log/mysqld.log
+```
+
+### **三、登录MySQL**
+
+```shell
+mysql -u root -p
+# 输入新设置的密码
+```
+
+### **四、第一次登录可能需要修改默认密码操作**
+
+```sql
+alter user 'root'@'localhost' IDENTIFIED BY '修改的密码';
+```
+
+若报错`Your password does not satisfy the current policy requirements`则表示该版本Mysql有密码强度检测，一般不允许过于简单的密码，此时如果你还是想搞简单的密码那么可以执行：
+
+```sql
+set global validate_password_policy=0;
 ```
 
 
