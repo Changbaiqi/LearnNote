@@ -3,7 +3,7 @@ title: MyBatis框架学习
 date: 2023-02-24 09:46:09
 author: 长白崎
 categories:
-  - "Java"
+  - ["Java","MyBatis"]
 tags:
   - "MyBatis"
   - "Java"
