@@ -9,8 +9,6 @@ tags:
   - "Java"
 ---
 
-
-
 # MyBatis框架学习
 
 ## 1.常用的框架SSM：
@@ -141,7 +139,7 @@ tags:
 
 ---
 
-# 从这里截断
+## 从这里截断
 
 
 
@@ -233,7 +231,7 @@ UsersMapper.xml
 
 
 
-# Update表更新操作
+## Update表更新操作
 
 ---
 
@@ -361,7 +359,7 @@ public void updateNotNull(){
 
 
 
-# MyBatis框架自动POJO的Bean注入规则：
+##  MyBatis框架自动POJO的Bean注入规则：
 
 1. 当POJO只有一个有参构造函数将会通过这个构造函数进行输入，否则将直接报错。
 2. 当POJO没有任何手写的构造函数时MyBatis框架将会使用set注入。
@@ -370,8 +368,49 @@ public void updateNotNull(){
 
 
 
-# Mapper的xml和Mapper的Java接口的关系
+## Mapper的xml和Mapper的Java接口的关系
 
 > 说明：Mapper的Java接口不是必须的，也可以不写Mapper对应的Java接口直接使用Mapper的xml，这里要注意的是单纯的使用MyBatis，Mapper的xml中的namespace和对应的sql的id都代表的是唯一id的意思没有其他关联的用途，除非设定绑定
 
 ![](./MyBatis学习/images/MyBatis不是用映射Mapper.png)
+
+
+
+
+
+## MyBatis中特殊符号转义符
+
+### 1、转译特殊符号方式
+
+注释：严格地讲，在 XML 中仅有字符 "<"和"&" 是非法的。省略号、引号和大于号是合法的，但是把它们替换为实体引用是个好的习惯。
+
+| 符号     | 原符号 | 替换符号   |
+| -------- | ------ | ---------- |
+| 小于     | <      | \&lt;      |
+| 小于等于 | <=     | \&lt;<=    |
+| 大于     | >      | \&gt;      |
+| 大于小于 | >=     | \&gt;=     |
+| 不等于   | <>     | \&lt;\&gt; |
+| 与       | &      | \&amp;     |
+| 单引号   | ’      | \&apos;    |
+| 双引号   | "      | \&quot;    |
+
+* mapper文件写法：
+
+  ```sql
+  select * form tablenme t where t.code &lt;&gt; 1
+  ```
+
+### 2、使用 CDATA 区段
+
+所有XML文档中的文本均会被解析器解析。只有CDATA区段（CDATA section）中的文本会被解析器忽略。
+
+```sql
+大于等于 <![CDATA[ >= ]]>  
+小于等于 <![CDATA[ <= ]]> 
+不等于<![CDATA[ <> ]]>
+ 
+mapper文件写法： 
+select t.* form tablenme t where t.code <![CDATA[<>]]> 1
+```
+
