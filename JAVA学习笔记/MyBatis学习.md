@@ -414,3 +414,55 @@ mapper文件写法：
 select t.* form tablenme t where t.code <![CDATA[<>]]> 1
 ```
 
+
+
+## Where和if标签的使用
+
+---
+
+```xml
+<select id="getPerson" resultType="com.lzj.bean.Employee">
+    select * from tbl_employee
+    <where>
+        <!-- test：判断表达式（OGNL）
+        遇见特殊符号应该去写转义字符：&&、''等字符
+        -->
+        <if test="id!=null">
+            id=#{id}
+        </if>
+        <if test="lastName!=null and lastName!=''">
+            and last_name like #{lastName}
+        </if>
+        <if test="email!=null and email.trim()!=''">
+            and email=#{email}
+        </if> 
+        <!-- ognl会进行字符串与数字的转换判断  "0"==0 -->
+        <if test="gender==0 or gender==1">
+            and gender=#{gender}
+        </if>
+    </where>
+ </select>
+```
+
+注意，`<if>`失败后， `<where>` 关键字只会去掉库表字段赋值前面的and，不会去掉语句后面的and关键字，即注意，`<where>` 只会去掉`<if>` 语句中的最开始的and关键字。所以下面的形式是不可取的
+
+```xml
+<select id="getPerson" resultType="com.lzj.bean.Employee">
+    select * from tbl_employee
+    <where>
+        <if test="id!=null">
+            id=#{id} and
+        </if>
+        <if test="lastName!=null and lastName!=''">
+            last_name like #{lastName} and
+        </if>
+        <if test="email!=null and email.trim()!=''">
+            email=#{email} and
+        </if> 
+        <if test="gender==0 or gender==1">
+            gender=#{gender}
+        </if>
+    </where>
+ </select>
+```
+
