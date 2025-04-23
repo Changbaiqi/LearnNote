@@ -24,12 +24,18 @@ tags:
 
 ![image-20240124175800640](./解决Hexo+Typora无法同时显示相对路径图片问题/images/image-20240124175800640.png)
 
-## 二、安装和简单魔改hexo-asset-images插件
+## 二、安装和简单魔改hexo-asset-image插件
 
 在hexo项目根目录使用指令安装`hexo-asset-images`插件
 
 ```shell
 npm hexo-asset-images --save
+```
+
+或者：
+
+```shell
+npm install https://github.com/CodeFalling/hexo-asset-image --save
 ```
 
 然后设置hexo项目根目录`_config.yml`配置:
@@ -130,7 +136,70 @@ hexo.extend.filter.register('after_post_render', function(data){
 });
 ```
 
+如果没效果的话可以试试下面另一个改版：
+
+```js
+'use strict';
+var cheerio = require('cheerio');
+     
+// http://stackoverflow.com/questions/14480345/how-to-get-the-nth-occurrence-in-a-string
+function getPosition(str, m, i) {
+  return str.split(m, i).join(m).length;
+}
+     
+var version = String(hexo.version).split('.');
+hexo.extend.filter.register('after_post_render', function(data){
+  var config = hexo.config;
+  if(config.post_asset_folder){
+       var link = data.permalink;
+       console.info("debugTest-> "+link)
+   if(version.length > 0 && Number(version[0]) == 3)
+      var beginPos = getPosition(link, '/', 1) + 1;
+   else
+      var beginPos = getPosition(link, '/', 3) + 1;
+   // In hexo 3.1.1, the permalink of "about" page is like ".../about/index.html".
+   var endPos = link.lastIndexOf('/') + 1;
+    link = link.substring(beginPos, endPos);
+     
+    var toprocess = ['excerpt', 'more', 'content'];
+    for(var i = 0; i < toprocess.length; i++){
+      var key = toprocess[i];
+      
+      var $ = cheerio.load(data[key], {
+        ignoreWhitespace: false,
+        xmlMode: false,
+        lowerCaseTags: false,
+        decodeEntities: false
+      });
+     
+      $('img').each(function(){
+       if ($(this).attr('src')){
+           // For windows style path, we replace '\' to '/'.
+           var src = $(this).attr('src').replace('\\', '/');
+          //  console.info(src);
+           
+           var srcSplit=src.split('/images/');
+          if(srcSplit.length<1) return; //如果图片文件长度不符合规范则直接return
+
+          //判断是否为本地src资源
+          if(srcSplit[srcSplit.length-1].includes(config.url.replaceAll("http://","").replaceAll("https://",""))){
+            $(this).attr('src', "/"+config.root + srcSplit[srcSplit.length-1].replaceAll("http://","").replaceAll("https://",""));
+            console.info&&console.info("update link as:-->"+"/"+srcSplit[srcSplit.length-1].replaceAll("http://","").replaceAll("https://",""));
+          }else{
+            $(this).attr('src', config.root + link +"images/"+ srcSplit[srcSplit.length-1]);
+            console.info&&console.info("update link as:-->"+config.root + link +"images/"+ srcSplit[srcSplit.length-1]);
+          }
+       }else{
+           console.info&&console.info("no src attr, skipped...");
+           console.info&&console.info($(this));
+       }
+      });
+      data[key] = $.html();
+    }
+  }
+});
+```
+
 
 
 然后就可以解决无法同时在 Typora 和 Web 上看到图片的问题了。
-
